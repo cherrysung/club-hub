@@ -1,5 +1,7 @@
 import { Box, Container, Grid, Paper, Typography } from '@mui/material';
 
+const ADVICE_API_URL = 'https://api.adviceslip.com/advice';
+
 function Home() {
   return (
     <Container maxWidth='md' sx={{ height: '100vh' }}>
