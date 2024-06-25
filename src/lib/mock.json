@@ -1,0 +1,1103 @@
+[
+  {
+    "club_name": "3D Printing Club",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Brian Kim"
+      }
+    ],
+    "relevant_subject": "Design",
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Sean Sonderman"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "40"
+  },
+  {
+    "club_name": "Amnesty International",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "William Kim"
+      },
+      {
+        "name": "Molly Lee",
+        "grade": 11
+      }
+    ],
+    "room": "B304",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Michael Hawkes"],
+    "type_of_activity": "Community Service",
+    "description": "Amnesty International is an international non-governmental organisation focused on human rights, with its headquarters in the United Kingdom. The organisation says it has more than ten million members and supporters around the world.",
+    "imageSrc": "https://firebasestorage.googleapis.com/v0/b/clubhub-cf705.appspot.com/o/clubs%2F29?alt=media&token=c5949f5e-17aa-4a4b-8153-37c1e8d8199c",
+    "leaders": ["jiwonro@logncoding.com"],
+    "clubId": "29"
+  },
+  {
+    "club_name": "Be:Co (work with endangered species/animals)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Rena Park",
+        "grade": 10
+      },
+      {
+        "name": "Sunny Choi",
+        "grade": 9
+      },
+      {
+        "grade": null,
+        "name": "Soyul Jace Lee"
+      }
+    ],
+    "relevant_subject": "Environmental Science",
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": [],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "44"
+  },
+  {
+    "club_name": "Beyond the Border",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Dylan Hyun Oh"
+      }
+    ],
+    "room": "C218",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Ceejay Jader"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "41"
+  },
+  {
+    "club_name": "Big Data Society",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Seon Kim"
+      },
+      {
+        "grade": null,
+        "name": "Jisoo Kim"
+      }
+    ],
+    "relevant_subject": "Design",
+    "room": "B418",
+    "semesters": "Both, optional",
+    "supervisor": ["Richard Probasco", "Graham GHaill"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "27"
+  },
+  {
+    "club_name": "Business Club",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "name": "Brendon Lee",
+        "grade": 11
+      },
+      {
+        "grade": 11,
+        "name": "Ashley Yoon"
+      },
+      {
+        "grade": 11,
+        "name": "Ian Park"
+      }
+    ],
+    "relevant_subject": "Business Management",
+    "room": "B411",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Jarod Martin"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "33"
+  },
+  {
+    "club_name": "Chadwick Astronomical Society",
+    "cas_requirements": "All",
+    "club_leaders": [
+      {
+        "name": "David Lee",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Marcus Kim"
+      },
+      {
+        "name": "Wonjun Lim",
+        "grade": 12
+      }
+    ],
+    "relevant_subject": "Physics",
+    "room": "B421",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Brian Gorodetsky"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "6"
+  },
+  {
+    "club_name": "Chadwick International Biology Research Club (CIBRC)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Olivia Lim"
+      },
+      {
+        "grade": 11,
+        "name": "Louise Han"
+      },
+      {
+        "name": "Brandon Han",
+        "grade": 11
+      }
+    ],
+    "relevant_subject": "Biology",
+    "room": "B319",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Garrett Horner"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "9"
+  },
+  {
+    "club_name": "Chadwick Science Society",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Shirley Park"
+      },
+      {
+        "name": "Erica Song",
+        "grade": 11
+      }
+    ],
+    "relevant_subject": "Science",
+    "room": "B321",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Manjusha"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "7"
+  },
+  {
+    "club_name": "CI Amor",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Claire Kim",
+        "grade": 11
+      },
+      {
+        "grade": 11,
+        "name": "Erica Song"
+      }
+    ],
+    "room": "B327",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Choco"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "30"
+  },
+  {
+    "club_name": "CI International Cultural Protector",
+    "cas_requirements": "Creativity & Activity",
+    "club_leaders": [
+      {
+        "name": "John Suh",
+        "grade": 10
+      },
+      {
+        "name": "Jason Lee",
+        "grade": 10
+      }
+    ],
+    "room": "B407",
+    "semesters": "Both, optional",
+    "supervisor": ["Mary Phodes"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "26"
+  },
+  {
+    "club_name": "CI Law Society",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "name": "Sadie",
+        "grade": 11
+      },
+      {
+        "name": "Andrew Park",
+        "grade": 12
+      }
+    ],
+    "relevant_subject": "I&S",
+    "room": "B307",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Kris Fedorak"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "32"
+  },
+  {
+    "club_name": "CI MEDSOC (CI medical society)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Hanna Lee",
+        "grade": 10
+      },
+      {
+        "name": "Leoni Kim",
+        "grade": 10
+      }
+    ],
+    "relevant_subject": "Science",
+    "room": "B421",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Brian Gorodetsky"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "45"
+  },
+  {
+    "club_name": "CI Stem Club",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "name": "Aiden Choi",
+        "grade": 11
+      },
+      {
+        "name": "Ryan Choi",
+        "grade": 11
+      },
+      {
+        "grade": 11,
+        "name": "Brandon Han"
+      }
+    ],
+    "relevant_subject": "Design",
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": [],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "42"
+  },
+  {
+    "club_name": "CIMUN",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Cherry Sung"
+      },
+      {
+        "name": "Edward Yun",
+        "grade": 12
+      },
+      {
+        "name": "Jiho Kwon",
+        "grade": 10
+      }
+    ],
+    "relevant_subject": "I&S",
+    "room": "B422",
+    "semesters": "Both, optional",
+    "supervisor": ["Keira Branscombe"],
+    "type_of_activity": "Debate",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "13"
+  },
+  {
+    "club_name": "CITV",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Esthelle Chung"
+      }
+    ],
+    "relevant_subject": "Film",
+    "room": "B117",
+    "semesters": "Both, optional",
+    "supervisor": ["Ms. Senedra Newsome"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "12"
+  },
+  {
+    "club_name": "Etoile",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Gaeun (Rose) Lee",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Chaebin (Cindy) An"
+      }
+    ],
+    "relevant_subject": "Visual Arts",
+    "room": "",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Gaeun (Rose) Lee", "Chaebin (Cindy) An"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "2"
+  },
+  {
+    "club_name": "Girl Up CI",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Patricia Jung",
+        "grade": 11
+      },
+      {
+        "name": "Ivana Plascencia",
+        "grade": 11
+      },
+      {
+        "name": "Clair Park",
+        "grade": 11
+      }
+    ],
+    "room": "PE Office / C222",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Ms. Pat"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "39"
+  },
+  {
+    "club_name": "Global Issues Network (GIN)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Justin Jin",
+        "grade": null
+      },
+      {
+        "grade": null,
+        "name": "Taeyeon (Nate) Kim"
+      }
+    ],
+    "relevant_subject": "I&S",
+    "room": "B327",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Tina Saldarelli"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "18"
+  },
+  {
+    "club_name": "Honor Orchestra",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Rachel Yang"
+      }
+    ],
+    "relevant_subject": "Music",
+    "room": "C131",
+    "semesters": "Both, optional",
+    "supervisor": ["Sonya Yi", "Deborah Cha"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "20"
+  },
+  {
+    "club_name": "Hyodo Club",
+    "cas_requirements": "Activity & Service",
+    "club_leaders": [
+      {
+        "name": "Sunny Seong",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Peter Park"
+      },
+      {
+        "grade": 12,
+        "name": "Jessica Kim"
+      }
+    ],
+    "room": "B404",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Ms. Seonjoo Jang"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "21"
+  },
+  {
+    "club_name": "Interact Club",
+    "cas_requirements": "Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Eddie Choi"
+      },
+      {
+        "grade": 12,
+        "name": "Jennie Kwon"
+      }
+    ],
+    "room": "B305",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Jiyoung Won"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "14"
+  },
+  {
+    "club_name": "Kaleidoscope",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Yun-Chen (Jin) Wu"
+      },
+      {
+        "name": "Junghyun (Clair) Park",
+        "grade": 11
+      },
+      {
+        "name": "Emmett Hill",
+        "grade": 11
+      }
+    ],
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Koester"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "35"
+  },
+  {
+    "club_name": "Kenya Service Club",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Jason Choi"
+      },
+      {
+        "grade": 10,
+        "name": "Dana Shim"
+      }
+    ],
+    "room": "B326",
+    "semesters": "Both, optional",
+    "supervisor": ["Ms. Blessina", "Mr. Bukachi"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "23"
+  },
+  {
+    "club_name": "Key Club",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Ryan Han",
+        "grade": 12
+      },
+      {
+        "name": "Christian Kim",
+        "grade": 11
+      },
+      {
+        "grade": 11,
+        "name": "Jenny Choi"
+      }
+    ],
+    "room": "B308",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Lan Zhu"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "10"
+  },
+  {
+    "club_name": "KISBC",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "name": "Hannah Oh",
+        "grade": 12
+      },
+      {
+        "name": "Chaehwan Shin",
+        "grade": 12
+      },
+      {
+        "name": "Hajun Jang",
+        "grade": 12
+      }
+    ],
+    "relevant_subject": "Biology",
+    "room": "B402",
+    "semesters": "Sem 2 only",
+    "supervisor": ["JuOK"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "37"
+  },
+  {
+    "club_name": "Latin America Exploration Club",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "grade": 12,
+        "name": "Yesmel Antigua"
+      },
+      {
+        "name": "Ivana Plasencia",
+        "grade": 11
+      },
+      {
+        "grade": 12,
+        "name": "Abby Dondis"
+      }
+    ],
+    "room": "B427",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Max Tang", "Addie See"],
+    "type_of_activity": "Culture",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "25"
+  },
+  {
+    "club_name": "Luminous",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "YooJin Lee"
+      },
+      {
+        "grade": 11,
+        "name": "Chris Kang"
+      },
+      {
+        "grade": 10,
+        "name": "Justin Lee"
+      }
+    ],
+    "relevant_subject": "Visual Arts",
+    "room": "B405",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Ms. Hwayoung Choi"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "34"
+  },
+  {
+    "club_name": "Mu Alpha Theta",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Harry Lee",
+        "grade": 12
+      },
+      {
+        "name": "Seojun Yoon",
+        "grade": 12
+      },
+      {
+        "grade": 9,
+        "name": "Dohun Kim"
+      }
+    ],
+    "relevant_subject": "Math",
+    "room": "B413",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Andrew Dondis"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "16"
+  },
+  {
+    "club_name": "Philippines Service Clubs – (Phil Service Learning & Phil. Philippine Service Action)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Jacqueline Park"
+      },
+      {
+        "name": "Kayla Shin",
+        "grade": 11
+      },
+      {
+        "grade": 12,
+        "name": "Mao Sim"
+      },
+      {
+        "name": "Ashley Yoon",
+        "grade": 11
+      },
+      {
+        "grade": 12,
+        "name": "Soomin Yoo"
+      },
+      {
+        "grade": 11,
+        "name": "Ruthy Cho"
+      }
+    ],
+    "room": "B302",
+    "semesters": "Both, optional",
+    "supervisor": ["Ms. Choco", "Libby"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "4"
+  },
+  {
+    "club_name": "Project 3",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Erin Hong",
+        "grade": 12
+      },
+      {
+        "name": "Rose Lee",
+        "grade": 12
+      },
+      {
+        "name": "Audrey Hong",
+        "grade": 12
+      }
+    ],
+    "relevant_subject": "Design",
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": [],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "38"
+  },
+  {
+    "club_name": "Pushcart Library",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [],
+    "room": "B419",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Bruno Chaput"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "22"
+  },
+  {
+    "club_name": "Rainmaker",
+    "cas_requirements": "Creativity & Activity",
+    "club_leaders": [
+      {
+        "grade": 10,
+        "name": "Peony Lee"
+      },
+      {
+        "name": "Dylan Oh",
+        "grade": 11
+      },
+      {
+        "name": "Ryan Oh",
+        "grade": 10
+      }
+    ],
+    "room": "B311",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Arian Canido"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "24"
+  },
+  {
+    "club_name": "Roundsquare",
+    "cas_requirements": "All",
+    "club_leaders": [
+      {
+        "name": "(Eunje) An",
+        "grade": 11
+      },
+      {
+        "name": "Sophie (Seoyoung) Kim",
+        "grade": 11
+      },
+      {
+        "name": "Jacob (Seungwoo) Hahn",
+        "grade": 11
+      }
+    ],
+    "room": "",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Julie MacDonald"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "43"
+  },
+  {
+    "club_name": "Smile",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Yejin (Jenny) Son",
+        "grade": 11
+      },
+      {
+        "name": "Rachel Lee",
+        "grade": 11
+      }
+    ],
+    "relevant_subject": "Visual Arts",
+    "room": "B310",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Michelle Xia"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "5"
+  },
+  {
+    "club_name": "SPEC (Science, Politics, Economics Combination)",
+    "cas_requirements": "Service",
+    "club_leaders": [
+      {
+        "name": "Nathan Lee",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Yunseo Choi"
+      }
+    ],
+    "relevant_subject": "Mixed",
+    "room": "US Library",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Faith Muturi"],
+    "type_of_activity": "Research",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "15"
+  },
+  {
+    "club_name": "Sports for FUN (not part of athletics/varsity)",
+    "cas_requirements": "Activity & Service",
+    "club_leaders": [
+      {
+        "grade": 10,
+        "name": "Yeonho Shin"
+      },
+      {
+        "name": "Nafis Shahriar",
+        "grade": 10
+      }
+    ],
+    "relevant_subject": "PHE",
+    "room": "Gymnastics room",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Wyatt Cameron"],
+    "type_of_activity": "Sports",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "19"
+  },
+  {
+    "club_name": "Students’ Vision for Children (SVC)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Gloria Eah",
+        "grade": 12
+      },
+      {
+        "name": "Samantha Jin",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Yeseo Shim"
+      }
+    ],
+    "room": "B313",
+    "semesters": "Sem 1 only",
+    "supervisor": ["Jin Choi"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "11"
+  },
+  {
+    "club_name": "Surviving In Korea",
+    "cas_requirements": "Service",
+    "club_leaders": [
+      {
+        "name": "Jun Kim",
+        "grade": 11
+      },
+      {
+        "grade": 11,
+        "name": "Andrew Ahn"
+      },
+      {
+        "name": "Soyul Terry Lee",
+        "grade": null
+      }
+    ],
+    "relevant_subject": "Korean",
+    "room": "B408",
+    "semesters": "Both, optional",
+    "supervisor": ["Gokhan Karakoc"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "3"
+  },
+  {
+    "club_name": "Theatre Tech",
+    "cas_requirements": "Creativity",
+    "club_leaders": [
+      {
+        "grade": 10,
+        "name": "Kelly Kwon"
+      }
+    ],
+    "relevant_subject": "Theatre Arts",
+    "room": "Theatre",
+    "semesters": "Both, optional",
+    "supervisor": ["Ms. Meli", "Mr. Mike"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "17"
+  },
+  {
+    "club_name": "Village School Sport Exploratory Helpers",
+    "cas_requirements": "Activity & Service",
+    "club_leaders": [
+      {
+        "name": "Kara Byun",
+        "grade": 12
+      },
+      {
+        "name": "Hyun Bin (Olivia) Seo",
+        "grade": 12
+      },
+      {
+        "grade": 11,
+        "name": "Lucas Kim"
+      }
+    ],
+    "relevant_subject": "PHE",
+    "room": "B410",
+    "semesters": "Both, mandatory",
+    "supervisor": ["Mr. Mac Templanza"],
+    "type_of_activity": "Sports",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "1"
+  },
+  {
+    "club_name": "Voiceless",
+    "cas_requirements": "Activity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Louise Han"
+      },
+      {
+        "name": "Claire (Heeryoung) Kim",
+        "grade": 11
+      }
+    ],
+    "room": "B310",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Santi Caeiro"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "31"
+  },
+  {
+    "club_name": "Water1st",
+    "cas_requirements": "All",
+    "club_leaders": [
+      {
+        "name": "Harry Oh",
+        "grade": 11
+      },
+      {
+        "grade": 12,
+        "name": "Jimin Park"
+      },
+      {
+        "grade": 12,
+        "name": "Sunny Kim"
+      }
+    ],
+    "room": "B327",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Mr. Chad Kuffner"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_2.jpg",
+    "clubId": "28"
+  },
+  {
+    "club_name": "Writing @ Wick (CI Writing clubs)\nJournalism (sem 1)\nHanji magazine (sem1)",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Sunny Kim",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Nahye Lee"
+      },
+      {
+        "name": "Ruby Kim",
+        "grade": 12
+      },
+      {
+        "name": "Hannah Oh",
+        "grade": 12
+      },
+      {
+        "name": "Patricia Jung",
+        "grade": 11
+      },
+      {
+        "name": "Eojin Park",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "Jeeye (Kenna) Choi"
+      },
+      {
+        "name": "Yoojin Lee",
+        "grade": 12
+      },
+      {
+        "name": "Victoria Im",
+        "grade": 12
+      },
+      {
+        "name": "Jayden Yoon",
+        "grade": 12
+      },
+      {
+        "grade": 12,
+        "name": "David Lee"
+      },
+      {
+        "grade": 12,
+        "name": "Harry Kim"
+      }
+    ],
+    "relevant_subject": "English",
+    "room": "B428",
+    "semesters": "Both, optional",
+    "supervisor": ["Mr. Jacobs", "Ms. Patterson"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_3.jpg",
+    "clubId": "8"
+  },
+  {
+    "club_name": "Yearbook",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "grade": 11,
+        "name": "Jamie Song"
+      },
+      {
+        "name": "Isha Del Carmen",
+        "grade": 11
+      }
+    ],
+    "relevant_subject": "Design",
+    "room": "B10",
+    "semesters": "Both, mandatory",
+    "supervisor": ["Jamie (Gimin) Lee"],
+    "type_of_activity": "Media/Content Creation/ Art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "0"
+  },
+  {
+    "club_name": "Z-Club: HeForShe",
+    "cas_requirements": "Creativity & Service",
+    "club_leaders": [
+      {
+        "name": "Shine Lee",
+        "grade": 10
+      }
+    ],
+    "room": "B404",
+    "semesters": "Sem 2 only",
+    "supervisor": ["Ms. Latoya", "Ms. Halley Kwon"],
+    "type_of_activity": "Community Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageSrc": "/images/club_1.jpg",
+    "clubId": "36"
+  }
+]
