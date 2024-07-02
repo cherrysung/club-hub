@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-function ClubItem({ club }) {
+function ClubItem({ club, onSeeClub }) {
   const [liked, setLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -62,7 +62,7 @@ function ClubItem({ club }) {
           <IconButton onClick={handleLikeClick}>
             {liked ? <Favorite color='error' /> : <FavoriteBorder />}
           </IconButton>
-          <IconButton>
+          <IconButton onClick={onSeeClub}>
             <ArrowForward />
           </IconButton>
         </CardActions>
