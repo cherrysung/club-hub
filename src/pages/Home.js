@@ -119,7 +119,7 @@ function Home() {
         <Grid container spacing={2} columns={{ xs: 1, sm: 8, md: 12 }}>
           {filteredData.map((club) => (
             <ClubItem
-              onSeeClub={() => handleSeeClub(club.clubId)}
+              onSeeClub={handleSeeClub}
               club={club}
               key={club.clubId}
             />

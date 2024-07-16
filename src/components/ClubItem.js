@@ -62,7 +62,7 @@ function ClubItem({ club, onSeeClub }) {
           <IconButton onClick={handleLikeClick}>
             {liked ? <Favorite color='error' /> : <FavoriteBorder />}
           </IconButton>
-          <IconButton onClick={onSeeClub}>
+          <IconButton onClick={() => onSeeClub(club.clubId)}>
             <ArrowForward />
           </IconButton>
         </CardActions>
