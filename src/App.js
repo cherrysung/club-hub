@@ -1,8 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Home from './pages/Home';
-import { useEffect, useState } from 'react';
 import Club from './pages/Club';
+import ClubDetail from './pages/ClubDetail';
+import Profile from './pages/Profile';
+import SignUp from './pages/SignUp';
+import Recommend from './pages/Recommend';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,24 @@ const router = createBrowserRouter([
   {
     path: '/club',
     Component: Club,
+    children: [
+      {
+        path: ':clubId',
+        Component: ClubDetail,
+      },
+    ],
+  },
+  {
+    path: '/signup',
+    Component: SignUp,
+  },
+  {
+    path: '/recommend',
+    Component: Recommend,
+  },
+  {
+    path: '/profile',
+    Component: Profile,
   },
 ]);
 
