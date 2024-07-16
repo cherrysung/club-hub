@@ -10,6 +10,9 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { useState } from 'react';
+import { doc, setDoc, getFirestore } from 'firebase/firestore';
+import { app } from '../lib/firebase/init';
 
 const GRADE_ITEMS = [
   { value: 9, label: 9 },
@@ -19,6 +22,30 @@ const GRADE_ITEMS = [
 ];
 
 function SignUp() {
+
+  const [credentials, setCredentials] = useState({
+    firstName: '',
+    lastName: '',
+    grade: ''
+  });
+
+  const handleSignup = async () => {
+    // replace with auth from authProvider
+    const TEMP_UID ='w0kMeCwVUwQ8KBNL5qrx2QCiB5P2';
+
+    if (!credentials.firstName || !credentials.lastName || !credentials.grade) {
+    return;
+    };
+
+    try {
+      const firestore = getFirestore(app);
+      const userRef = doc(firestore, 'users', TEMP_UID);
+      await setDoc(userRef, credentials);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container maxWidth='md'>
       <Box
@@ -41,11 +68,33 @@ function SignUp() {
             }}
           >
             <Typography variant='h5'>Sign Up</Typography>
-            <TextField size='small' required label='First name' />
-            <TextField size='small' required label='Last name' />
+            <TextField 
+            size='small' 
+            required label='First name' 
+            value={credentials.firstName} 
+            onChange={(e) => setCredentials({
+              ...credentials,
+              firstName: e.target.value
+            })} />
+            <TextField 
+            size='small' 
+            required label='Last name' 
+            value={credentials.lastName}
+            onChange={(e) => setCredentials({
+              ...credentials,
+              lastName: e.target.value
+            })}
+               />
             <FormControl required size='small'>
               <InputLabel>Grade</InputLabel>
-              <Select label='Grade'>
+              <Select 
+              label='Grade'
+              value={credentials.grade}    
+              onChange={(e) => setCredentials({
+                ...credentials,
+                grade: e.target.value
+              })}         
+              >
                 <MenuItem disabled value=''>
                   <em>Select a grade</em>
                 </MenuItem>
@@ -56,7 +105,7 @@ function SignUp() {
                 ))}
               </Select>
             </FormControl>
-            <Button variant='contained'>
+            <Button variant='contained' onClick={handleSignup}>
               <span>Submit</span>
             </Button>
           </Paper>
@@ -64,6 +113,6 @@ function SignUp() {
       </Box>
     </Container>
   );
-}
+};
 
 export default SignUp;
