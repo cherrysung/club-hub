@@ -1,6 +1,6 @@
 import { Box, Button, Typography, IconButton } from '@mui/material';
 import { ArrowBack, Favorite, FavoriteBorder } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import mockData from '../lib/mock.json';
 
@@ -67,6 +67,9 @@ function Club() {
             <Typography variant='h8'>{club.club_name}</Typography>
           </Box>
         ))}
+      </Box>
+      <Box flex={1} sx={{ height: '100vh', overflowY: 'auto' }}>
+        <Outlet />
       </Box>
     </Box>
   );
