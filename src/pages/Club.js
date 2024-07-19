@@ -1,20 +1,18 @@
-import { Box, Button, Typography, IconButton } from '@mui/material';
-import { ArrowBack, Favorite, FavoriteBorder } from '@mui/icons-material';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Box, Typography, IconButton } from '@mui/material';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import mockData from '../lib/mock.json';
+import HomeButton from '../components/base/HomeButton';
+import { Person } from '@mui/icons-material';
 
 function Club() {
   const navigate = useNavigate();
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [clickedItemId, setClickedItemId] = useState(null);
+  const param = useParams();
+  const [selected, setSelected] = useState(param.clubId ?? '');
 
-  const handleBackHomeClick = () => {
-    navigate('/home');
-  };
-
-  const handleItemClick = (id) => {
-    setClickedItemId(id);
+  const handleSelectClub = (clubId) => {
+    setSelected(clubId);
+    navigate(`/club/${clubId}`);
   };
 
   return (
@@ -30,35 +28,31 @@ function Club() {
           pb: 5,
         }}
       >
-        <Button
-          onClick={handleBackHomeClick}
+        <Box
           sx={{
-            color: 'blue',
-            textTransform: 'none',
-            alignSelf: 'flex-start',
-            padding: '3px 6px',
-            fontSize: '0.8rem',
-            ml: 1,
-            mt: 1,
+            px: 2,
+            py: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
-          startIcon={<ArrowBack />}
         >
-          BACK HOME
-        </Button>
-
-        <Typography variant='h5' sx={{ mt: 3, ml: 1, mb: 3 }}>
+          <HomeButton />
+          <IconButton onClick={() => navigate('/profile')}>
+            <Person />
+          </IconButton>
+        </Box>
+        <Typography variant='h5' sx={{ mt: 3, ml: 2, mb: 3 }}>
           Clubhub
         </Typography>
         {mockData.map((club) => (
           <Box
             key={club.clubId}
-            onClick={() => handleItemClick(club.clubId)}
+            onClick={() => handleSelectClub(club.clubId)}
             sx={{
               px: 2,
               py: 1,
               cursor: 'pointer',
-              backgroundColor:
-                clickedItemId === club.clubId ? 'grey.300' : 'white',
+              backgroundColor: selected === club.clubId ? 'grey.300' : 'white',
               '&:hover': {
                 backgroundColor: 'lightblue',
               },
