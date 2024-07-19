@@ -1,32 +1,23 @@
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
-import { GoogleAuthProvider, getAdditionalUserInfo, getAuth, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { app } from '../lib/firebase/init';
+import { useAuth } from '../providers/authProvider';
 
 function Landing() {
   const navigate = useNavigate();
+  const { signInWithGoogle } = useAuth();
 
   const handleSignin = async () => {
-    // sign in with google
-    const firebaseAuth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-
-    try {
-    const userCredential = await signInWithPopup(firebaseAuth, provider);
-    const userAdditionalInfo = getAdditionalUserInfo(userCredential);
-    const user = userCredential.user;
-    if (user && userAdditionalInfo ) {
-      if (userAdditionalInfo.isNewUser) {
-      // if new user -> navigate to signup
-        navigate('/signup');
-      }
-        // if existing user -> navigate to home
-        navigate('/home');
+  try {
+    const isNewUser = await signInWithGoogle();
+    if (isNewUser) {
+      navigate('/signup');
+    } else {
+      navigate('/home');
     }
   } catch (error) {
-    console.error(error);
+
   }
-  };
+};
 
   return (
     <Container maxWidth='md' sx={{ height: '100vh' }}>
