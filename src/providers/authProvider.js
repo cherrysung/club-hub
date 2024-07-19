@@ -11,20 +11,24 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { app } from '../lib/firebase/init';
+import { doc, getFirestore, serverTimestamp, setDoc } from 'firebase/firestore';
 
-const AuthContext = createContext({
+export const AuthContext = createContext({
   auth: null,
   signInWithGoogle: async () => {},
   signout: async () => {},
 });
+
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null);
 
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const firestore = getFirestore(app);
 
   const signInWithGoogle = async () => {
     try {
@@ -32,9 +36,16 @@ export const AuthProvider = ({ children }) => {
       const userAdditionalInfo = getAdditionalUserInfo(userCredential);
       const user = userCredential.user;
       if (user && userAdditionalInfo) {
-        // TODO: Create new user doc in firestore
+        setAuth(user);
+        if (userAdditionalInfo.isNewUser) {
+          const userRef = doc(firestore, 'users', user.uid);
+          await setDoc(userRef, {
+            email: user.email,
+            createdAt: serverTimestamp(),
+          });
+          return true;
+        }
       }
-      setAuth(user);
     } catch (error) {
       console.error(error);
       throw error;

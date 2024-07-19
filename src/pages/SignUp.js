@@ -9,10 +9,11 @@ import {
   Select,
   TextField,
   Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
-import { app } from '../lib/firebase/init';
+} from "@mui/material";
+import { useState } from "react";
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
+import { app } from "../lib/firebase/init";
+import { useAuth } from "../providers/authProvider";
 
 const GRADE_ITEMS = [
   { value: 9, label: 9 },
@@ -22,80 +23,92 @@ const GRADE_ITEMS = [
 ];
 
 function SignUp() {
+  const { auth } = useAuth();
 
   const [credentials, setCredentials] = useState({
-    firstName: '',
-    lastName: '',
-    grade: ''
+    firstName: "",
+    lastName: "",
+    grade: "",
   });
 
   const handleSignup = async () => {
-    // replace with auth from authProvider
-    const TEMP_UID ='w0kMeCwVUwQ8KBNL5qrx2QCiB5P2';
-
+    if (!auth) return;
     if (!credentials.firstName || !credentials.lastName || !credentials.grade) {
-    return;
-    };
+      return;
+    }
 
     try {
       const firestore = getFirestore(app);
-      const userRef = doc(firestore, 'users', TEMP_UID);
-      await setDoc(userRef, credentials);
+      const userRef = doc(firestore, "users", auth.uid);
+      await updateDoc(userRef, {
+        ...credentials,
+        favorites: [],
+        recommendations: {},
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <Container maxWidth='md'>
+    <Container maxWidth="md">
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          height: '100vh',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100vh",
         }}
       >
-        <Box component='form'>
+        <Box component="form">
           <Paper
             elevation={3}
             sx={{
               padding: 5,
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               gap: 2,
             }}
           >
-            <Typography variant='h5'>Sign Up</Typography>
-            <TextField 
-            size='small' 
-            required label='First name' 
-            value={credentials.firstName} 
-            onChange={(e) => setCredentials({
-              ...credentials,
-              firstName: e.target.value
-            })} />
-            <TextField 
-            size='small' 
-            required label='Last name' 
-            value={credentials.lastName}
-            onChange={(e) => setCredentials({
-              ...credentials,
-              lastName: e.target.value
-            })}
-               />
-            <FormControl required size='small'>
+            <Typography variant="h5">Sign Up</Typography>
+            <TextField
+              size="small"
+              required
+              label="First name"
+              value={credentials.firstName}
+              onChange={(e) =>
+                setCredentials({
+                  ...credentials,
+                  firstName: e.target.value,
+                })
+              }
+            />
+            <TextField
+              size="small"
+              required
+              label="Last name"
+              value={credentials.lastName}
+              onChange={(e) =>
+                setCredentials({
+                  ...credentials,
+                  lastName: e.target.value,
+                })
+              }
+            />
+            <FormControl required size="small">
               <InputLabel>Grade</InputLabel>
-              <Select 
-              label='Grade'
-              value={credentials.grade}    
-              onChange={(e) => setCredentials({
-                ...credentials,
-                grade: e.target.value
-              })}         
+              <Select
+                label="Grade"
+                value={credentials.grade}
+                onChange={(e) =>
+                  setCredentials({
+                    ...credentials,
+                    grade: e.target.value,
+                  })
+                }
               >
-                <MenuItem disabled value=''>
+                <MenuItem disabled value="">
                   <em>Select a grade</em>
                 </MenuItem>
                 {GRADE_ITEMS.map((item) => (
@@ -105,7 +118,7 @@ function SignUp() {
                 ))}
               </Select>
             </FormControl>
-            <Button variant='contained' onClick={handleSignup}>
+            <Button variant="contained" onClick={handleSignup}>
               <span>Submit</span>
             </Button>
           </Paper>
@@ -113,6 +126,6 @@ function SignUp() {
       </Box>
     </Container>
   );
-};
+}
 
 export default SignUp;
