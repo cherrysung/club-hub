@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import SignUp from './pages/SignUp';
 import Recommend from './pages/Recommend';
 import { AuthProvider } from './providers/authProvider';
+import { ClubsProvider } from './providers/clubsProvider';
 
 const router = createBrowserRouter([
   {
@@ -44,11 +45,13 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AuthProvider>
-          <RouterProvider
-      router={router}
-      fallbackElement={<p>...Initial load...</p>}
-    />
-        </AuthProvider>
+      <ClubsProvider>
+        <RouterProvider
+          router={router}
+          fallbackElement={<p>...Initial load...</p>}
+        />
+      </ClubsProvider>
+    </AuthProvider>
   );
 }
 export default App;
