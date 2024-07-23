@@ -1,43 +1,44 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Landing from './pages/Landing';
-import Home from './pages/Home';
-import Club from './pages/Club';
-import ClubDetail from './pages/ClubDetail';
-import Profile from './pages/Profile';
-import SignUp from './pages/SignUp';
-import Recommend from './pages/Recommend';
-import { AuthProvider } from './providers/authProvider';
-import { ClubsProvider } from './providers/clubsProvider';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Home from "./pages/Home";
+import Club from "./pages/Club";
+import ClubDetail from "./pages/ClubDetail";
+import Profile from "./pages/Profile";
+import SignUp from "./pages/SignUp";
+import Recommend from "./pages/Recommend";
+import { AuthProvider } from "./providers/authProvider";
+import { ClubsProvider } from "./providers/clubsProvider";
+import { UserProvider } from "./providers/userProvider";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     Component: Landing,
   },
   {
-    path: '/home',
+    path: "/home",
     Component: Home,
   },
   {
-    path: '/club',
+    path: "/club",
     Component: Club,
     children: [
       {
-        path: ':clubId',
+        path: ":clubId",
         Component: ClubDetail,
       },
     ],
   },
   {
-    path: '/signup',
+    path: "/signup",
     Component: SignUp,
   },
   {
-    path: '/recommend',
+    path: "/recommend",
     Component: Recommend,
   },
   {
-    path: '/profile',
+    path: "/profile",
     Component: Profile,
   },
 ]);
@@ -45,12 +46,14 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AuthProvider>
-      <ClubsProvider>
-        <RouterProvider
-          router={router}
-          fallbackElement={<p>...Initial load...</p>}
-        />
-      </ClubsProvider>
+      <UserProvider>
+        <ClubsProvider>
+          <RouterProvider
+            router={router}
+            fallbackElement={<p>...Initial load...</p>}
+          />
+        </ClubsProvider>
+      </UserProvider>
     </AuthProvider>
   );
 }
