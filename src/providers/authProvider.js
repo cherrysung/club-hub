@@ -10,10 +10,10 @@ import {
   getAuth,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
-import { createContext, useContext, useState } from 'react';
-import { app } from '../lib/firebase/init';
-import { doc, getFirestore, serverTimestamp, setDoc } from 'firebase/firestore';
+} from "firebase/auth";
+import { createContext, useContext, useState } from "react";
+import { app } from "../lib/firebase/init";
+import { doc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 
 export const AuthContext = createContext({
   auth: null,
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       if (user && userAdditionalInfo) {
         setAuth(user);
         if (userAdditionalInfo.isNewUser) {
-          const userRef = doc(firestore, 'users', user.uid);
+          const userRef = doc(firestore, "users", user.uid);
           await setDoc(userRef, {
             email: user.email,
             createdAt: serverTimestamp(),
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
       await signOut(firebaseAuth);
       setAuth(null);
     } catch (error) {
-      console.error('Failed to sign out:', error);
+      console.error("Failed to sign out:", error);
       throw error;
     }
   };
