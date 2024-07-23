@@ -1,11 +1,13 @@
-import { useMemo, useState } from 'react';
-import { Box, Chip, Container, Grid, Typography } from '@mui/material';
-import mockData from '../lib/mock.json';
-import ClubItem from '../components/ClubItem';
-import { ACTIVITY_CATEGORIES, CAS_CATEGORIES } from '../lib/constants';
-import { useNavigate } from 'react-router-dom';
+import { useMemo, useState } from "react";
+import { Box, Chip, Container, Grid, Typography } from "@mui/material";
+import mockData from "../lib/mock.json";
+import ClubItem from "../components/ClubItem";
+import { ACTIVITY_CATEGORIES, CAS_CATEGORIES } from "../lib/constants";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../providers/userProvider";
 
 function Home() {
+  const { user } = useUser();
   const navigate = useNavigate();
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -44,27 +46,29 @@ function Home() {
   }, [selectedCategories]);
 
   return (
-    <Container maxWidth='md' sx={{ height: '100vh' }}>
+    <Container maxWidth="md" sx={{ height: "100vh" }}>
       <Box sx={{ my: 4 }}>
-        <Typography variant='h5' mb={4}>
-          Hey,
-        </Typography>
+        {user && (
+          <Typography variant="h5" mb={4}>
+            Hey, {user.firstName} {user.lastName}
+          </Typography>
+        )}
         <Box sx={{ mb: 4 }}>
           <Box>
             <Typography>CAS Requirement</Typography>
             <Box
               sx={{
-                display: 'flex',
+                display: "flex",
                 gap: 1,
                 py: 1,
                 mb: 2,
-                overflowX: 'auto',
-                '&::-webkit-scrollbar': { height: '4px' },
-                '&::-webkit-scrollbar-track': {
-                  backgroundColor: 'rgba(221,221,221,0.5)',
+                overflowX: "auto",
+                "&::-webkit-scrollbar": { height: "4px" },
+                "&::-webkit-scrollbar-track": {
+                  backgroundColor: "rgba(221,221,221,0.5)",
                 },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: 'rgba(0,0,0,0.2)',
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "rgba(0,0,0,0.2)",
                   borderRadius: 10,
                 },
               }}
@@ -76,8 +80,8 @@ function Home() {
                   label={item.label}
                   variant={
                     selectedCategories.includes(item.value)
-                      ? 'filled'
-                      : 'outlined'
+                      ? "filled"
+                      : "outlined"
                   }
                 />
               ))}
@@ -87,16 +91,16 @@ function Home() {
             <Typography>Type of Activity</Typography>
             <Box
               sx={{
-                display: 'flex',
+                display: "flex",
                 gap: 1,
                 py: 1,
-                overflowX: 'auto',
-                '&::-webkit-scrollbar': { height: '4px' },
-                '&::-webkit-scrollbar-track': {
-                  backgroundColor: 'rgba(221,221,221,0.5)',
+                overflowX: "auto",
+                "&::-webkit-scrollbar": { height: "4px" },
+                "&::-webkit-scrollbar-track": {
+                  backgroundColor: "rgba(221,221,221,0.5)",
                 },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: 'rgba(0,0,0,0.2)',
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "rgba(0,0,0,0.2)",
                   borderRadius: 10,
                 },
               }}
@@ -108,8 +112,8 @@ function Home() {
                   label={item.label}
                   variant={
                     selectedCategories.includes(item.value)
-                      ? 'filled'
-                      : 'outlined'
+                      ? "filled"
+                      : "outlined"
                   }
                 />
               ))}
@@ -118,11 +122,7 @@ function Home() {
         </Box>
         <Grid container spacing={2} columns={{ xs: 1, sm: 8, md: 12 }}>
           {filteredData.map((club) => (
-            <ClubItem
-              onSeeClub={handleSeeClub}
-              club={club}
-              key={club.clubId}
-            />
+            <ClubItem onSeeClub={handleSeeClub} club={club} key={club.clubId} />
           ))}
         </Grid>
       </Box>
