@@ -1,23 +1,28 @@
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/authProvider';
+import { useEffect } from 'react';
 
 function Landing() {
   const navigate = useNavigate();
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, auth } = useAuth();
 
-  const handleSignin = async () => {
-  try {
-    const isNewUser = await signInWithGoogle();
-    if (isNewUser) {
-      navigate('/signup');
-    } else {
+  useEffect(() => {
+    if (auth) {
       navigate('/home');
     }
-  } catch (error) {
+  }, [auth, navigate]);
 
-  }
-};
+  const handleSignin = async () => {
+    try {
+      const isNewUser = await signInWithGoogle();
+      if (isNewUser) {
+        navigate('/signup');
+      }
+    } catch (error) {
+      console.error('Failed to sign in: ', error);
+    }
+  };
 
   return (
     <Container maxWidth='md' sx={{ height: '100vh' }}>

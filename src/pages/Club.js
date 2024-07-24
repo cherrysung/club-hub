@@ -1,9 +1,9 @@
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import mockData from '../lib/mock.json';
 import HomeButton from '../components/base/HomeButton';
-import { Person } from '@mui/icons-material';
+import ProfileButton from '../components/base/ProfileButton';
 
 function Club() {
   const navigate = useNavigate();
@@ -37,9 +37,7 @@ function Club() {
           }}
         >
           <HomeButton />
-          <IconButton onClick={() => navigate('/profile')}>
-            <Person />
-          </IconButton>
+          <ProfileButton />
         </Box>
         <Typography variant='h5' sx={{ mt: 3, ml: 2, mb: 3 }}>
           Clubhub

@@ -1,7 +1,4 @@
-import { Button } from '@mui/material';
 import { initializeApp } from 'firebase/app';
-import { doc, getFirestore, writeBatch } from 'firebase/firestore';
-import data from '../mock.json';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCZjGv2VF7i9_eQy0oXOkX0TZBOhzVFPyA',
@@ -15,19 +12,3 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-
-const firestore = getFirestore(app);
-
-export const AddDataButton = () => {
-  const handleClick = async () => {
-    const batch = writeBatch(firestore);
-
-    data.forEach((clubDoc) => {
-      batch.set(doc(firestore, 'clubs', clubDoc.clubId), clubDoc);
-    });
-
-    await batch.commit();
-  };
-
-  return <Button onClick={handleClick}>Add Club Data</Button>;
-};

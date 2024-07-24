@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
-import mockData from '../lib/mock.json';
 import { Box, Container } from '@mui/material';
 import Details from '../components/ClubDetail/Details';
 import Forum from '../components/ClubDetail/Forum';
+import { useClubs } from '../providers/clubsProvider';
 
 function ClubDetail() {
+  const { clubs } = useClubs();
   const param = useParams();
-  const club = mockData.find((club) => club.clubId === param.clubId);
+  const club = clubs.find((club) => club.clubId === param.clubId);
 
   return (
     <Container>
@@ -14,7 +15,7 @@ function ClubDetail() {
         {club && (
           <>
             <Details club={club} />
-            <Forum clubId={club.clubId} />
+            <Forum />
           </>
         )}
       </Box>
