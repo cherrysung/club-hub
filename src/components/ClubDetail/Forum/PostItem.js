@@ -15,6 +15,7 @@ function PostItem({
   currentAuthUid,
   onDeleteReply,
   onAddReply,
+  isLeader,
 }) {
   const [addReply, setAddReply] = useState(false);
 
@@ -22,9 +23,16 @@ function PostItem({
     <Box mb={3}>
       <Typography mb={1}>{content}</Typography>
       <Box display='flex' alignItems='center' gap={2}>
-        <Box display='flex' alignItems='center' gap={0.5}>
+        <Box
+          display='flex'
+          alignItems='center'
+          gap={0.5}
+          color={isLeader ? 'primary.main' : 'GrayText'}
+        >
           <Person fontSize='small' />
-          <Typography variant='body2'>{name}</Typography>
+          <Typography variant='body2'>
+            {name} {isLeader && '(Leader)'}
+          </Typography>
         </Box>
         <Box display='flex' alignItems='center' gap={0.5} color='GrayText'>
           <AccessTime fontSize='small' />
@@ -56,11 +64,18 @@ function PostItem({
                 createdAt={createdAt}
                 canDelete={authorId === currentAuthUid}
                 onDelete={() => onDeleteReply(postId, replyId)}
+                isLeader={isLeader}
               />
             )
           )}
       </Box>
-      {addReply && <CreateReply onAddReply={onAddReply} postId={postId} />}
+      {addReply && (
+        <CreateReply
+          onAddReply={onAddReply}
+          postId={postId}
+          isLeader={isLeader}
+        />
+      )}
     </Box>
   );
 }

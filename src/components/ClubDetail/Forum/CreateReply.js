@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-function CreateReply({ onAddReply, postId }) {
+function CreateReply({ onAddReply, postId, isLeader }) {
   const [content, setContent] = useState('');
   const [isAnon, setAnon] = useState(false);
 
@@ -38,23 +38,25 @@ function CreateReply({ onAddReply, postId }) {
       <Button type='submit' variant='contained'>
         Reply
       </Button>
-      <FormControlLabel
-        label='Post Anonymous'
-        slotProps={{
-          typography: {
-            variant: 'body2',
-            color: isAnon ? 'unset' : 'GrayText',
-          },
-        }}
-        control={
-          <Checkbox
-            disableRipple
-            checked={isAnon}
-            onChange={() => setAnon(!isAnon)}
-            sx={{ paddingRight: '2px', color: 'GrayText' }}
-          />
-        }
-      />
+      {!isLeader && (
+        <FormControlLabel
+          label='Post Anonymous'
+          slotProps={{
+            typography: {
+              variant: 'body2',
+              color: isAnon ? 'unset' : 'GrayText',
+            },
+          }}
+          control={
+            <Checkbox
+              disableRipple
+              checked={isAnon}
+              onChange={() => setAnon(!isAnon)}
+              sx={{ paddingRight: '2px', color: 'GrayText' }}
+            />
+          }
+        />
+      )}
     </Box>
   );
 }

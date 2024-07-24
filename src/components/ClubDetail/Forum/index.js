@@ -13,7 +13,7 @@ import {
 import { useAuth } from '../../../providers/authProvider';
 import { useUser } from '../../../providers/userProvider';
 
-function Forum() {
+function Forum({ isLeader }) {
   const { clubId } = useParams();
   const { auth } = useAuth();
   const { user } = useUser();
@@ -117,6 +117,7 @@ function Forum() {
                 currentAuthUid={auth.uid}
                 onDeleteReply={handleDeleteReply}
                 onAddReply={handleAddReply}
+                isLeader={isLeader}
               />
             )
           )}

@@ -12,11 +12,13 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { app } from './init';
 import { Button } from '@mui/material';
 import data from '../mock.json';
 
 const firestore = getFirestore(app);
+const storage = getStorage(app);
 
 export const AddDataButton = () => {
   const handleClick = async () => {
@@ -188,6 +190,32 @@ export const deleteReplyDoc = async (clubId, postId, replyId) => {
     await deleteDoc(replyDocRef);
   } catch (error) {
     console.error('Failed to delete reply doc: ', error);
+    throw error;
+  }
+};
+
+export const updateClub = async (clubId, field, newValue) => {
+  try {
+    const clubDocRef = doc(firestore, 'clubs', clubId);
+    await updateDoc(clubDocRef, {
+      [field]: newValue,
+    });
+  } catch (error) {
+    console.error('Failed to update club', error);
+    throw error;
+  }
+};
+
+export const updateClubImage = async (clubId, file) => {
+  const storageRef = ref(storage, `clubs/${clubId}`);
+
+  try {
+    await uploadBytes(storageRef, file);
+    const downloadUrl = await getDownloadURL(storageRef);
+
+    await updateClub(clubId, 'imageSrc', downloadUrl);
+  } catch (error) {
+    console.error('Failed to update club image', error);
     throw error;
   }
 };

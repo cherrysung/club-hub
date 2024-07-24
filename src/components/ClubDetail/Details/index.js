@@ -1,6 +1,27 @@
 import { Box, Grid, Typography } from '@mui/material';
+import Editableimage from './EditableImage';
+import { updateClub, updateClubImage } from '../../../lib/firebase/firestore';
+import EditableText from './EditableText';
 
-function Details({ club }) {
+function Details({ club, setInvokeFetchClubs, isLeader }) {
+  const handleUploadImage = async (newFile) => {
+    try {
+      await updateClubImage(club.clubId, newFile);
+      setInvokeFetchClubs(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSave = async (field, newValue) => {
+    try {
+      await updateClub(club.clubId, field, newValue);
+      setInvokeFetchClubs(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Box>
       <Typography variant='h5' mt={11} mb={4}>
@@ -8,32 +29,44 @@ function Details({ club }) {
       </Typography>
       <Grid container spacing={3} columns={2}>
         <Grid item sm={2} md={1}>
-          <Box>
+          <Box position='relative'>
             <Typography variant='body2' fontWeight={600} sx={{ mb: 1 }}>
               Description
             </Typography>
-            <Typography>{club.description}</Typography>
+            {isLeader ? (
+              <EditableText
+                value={club.description}
+                multiline
+                onSave={(newValue) => handleSave('description', newValue)}
+              />
+            ) : (
+              <Typography>{club.description}</Typography>
+            )}
           </Box>
         </Grid>
         <Grid item sm={2} md={1}>
-          <Box
-            sx={{
-              borderRadius: 3,
-              overflow: 'hidden',
-              width: '100%',
-              height: '100%',
-            }}
-          >
-            <img
-              src={club.imageSrc}
-              alt='club'
-              style={{
+          {isLeader ? (
+            <Editableimage src={club.imageSrc} onEdit={handleUploadImage} />
+          ) : (
+            <Box
+              sx={{
+                borderRadius: 3,
+                overflow: 'hidden',
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
               }}
-            />
-          </Box>
+            >
+              <img
+                src={club.imageSrc}
+                alt='club'
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            </Box>
+          )}
         </Grid>
         <Grid item sm={2} md={1}>
           <Box>
