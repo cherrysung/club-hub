@@ -6,14 +6,14 @@ import {
   ListItemButton,
   ListItemText,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
 function MyRecommendations({ onNavigate, onTakeSurvey, recommendations }) {
   return (
     <Box sx={{ mt: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant='h5'>Recommendations</Typography>
-        <Button onClick={onTakeSurvey} variant='outlined'>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h5">Recommendations</Typography>
+        <Button onClick={onTakeSurvey} variant="outlined">
           Take survey again
         </Button>
       </Box>

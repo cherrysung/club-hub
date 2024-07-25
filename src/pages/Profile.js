@@ -1,35 +1,18 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  List,
-  ListItem,
-  Typography,
-} from '@mui/material';
-import HomeButton from '../components/base/HomeButton';
-import { useUser } from '../providers/userProvider';
-import MyRecommendations from '../components/profile/MyRecommendations';
-import { useNavigate } from 'react-router-dom';
-import { useClubs } from '../providers/clubsProvider';
-import { useCallback, useEffect, useState } from 'react';
-
-function formatDate(timestamp) {
-  const date = new Date(
-    timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
-  );
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
-  const year = date.getFullYear();
-  return `${month}/${day}/${year}`;
-}
+import { Container } from "@mui/material";
+import { useUser } from "../providers/userProvider";
+import MyInfo from "../components/profile/MyInfo";
+import MyRecommendations from "../components/profile/MyRecommendations";
+import MyFavorites from "../components/profile/MyFavorites";
+import { useNavigate } from "react-router-dom";
+import { useClubs } from "../providers/clubsProvider";
+import { useCallback, useEffect, useState } from "react";
 
 function Profile() {
   const navigate = useNavigate();
   const { user } = useUser();
   const { clubs } = useClubs();
   const [recommendedClubs, setRecommendedClubs] = useState([]);
-  const favoriteClubs = ['11 Club', '12 Club', '13 Club', '14 Club'];
+  const favoriteClubs = ["11 Club", "12 Club", "13 Club", "14 Club"];
 
   const getRecommendedClubs = useCallback(() => {
     if (!user) return;
@@ -41,8 +24,8 @@ function Profile() {
       recommendedClubs = clubIds
         .map((id) => clubs.find((club) => club.clubId === id))
         .sort((a, b) => {
-          const aName = a?.club_name ?? '';
-          const bName = b?.club_name ?? '';
+          const aName = a?.club_name ?? "";
+          const bName = b?.club_name ?? "";
           return aName.localeCompare(bName);
         });
     }
@@ -55,7 +38,7 @@ function Profile() {
   };
 
   const goToSurvey = () => {
-    navigate('/recommend');
+    navigate("/recommend");
   };
 
   useEffect(() => {
@@ -64,55 +47,15 @@ function Profile() {
   }, [getRecommendedClubs]);
 
   return (
-    <Container maxWidth='md'>
-      <Box sx={{ my: 4 }}>
-        <Box display='flex' width='100%' justifyContent='space-between'>
-          <HomeButton />
-          <Button variant='contained'>Sign out</Button>
-        </Box>
-      </Box>
-      <Box sx={{ mb: 1 }}>
-        <Typography variant='h5'>My Info</Typography>
-      </Box>
-      {user && (
-        <Grid container spacing={1} columns={2}>
-          <Grid item xs={2} sm={1}>
-            <Typography variant='body1' mt={1}>
-              Name: {user.firstName} {user.lastName}
-            </Typography>
-          </Grid>
-          <Grid item xs={2} sm={1}>
-            <Typography variant='body1' mt={1}>
-              Member Since: {formatDate(user.createdAt)}
-            </Typography>
-          </Grid>
-          <Grid item xs={2} sm={1}>
-            <Typography variant='body1' mt={1}>
-              Grade: {user.grade}
-            </Typography>
-          </Grid>
-          <Grid item xs={2} sm={1}>
-            <Typography variant='body1' mt={1}>
-              Email: {user.email}
-            </Typography>
-          </Grid>
-        </Grid>
-      )}
+    <Container>
+      <MyInfo onNavigate={goToClub} />
       <MyRecommendations
         onNavigate={goToClub}
         onTakeSurvey={goToSurvey}
         recommendations={recommendedClubs}
       />
-      <Box sx={{ mt: 2 }}>
-        <Typography variant='h5'>My Favorites</Typography>
-        <List>
-          {favoriteClubs.map((club, index) => (
-            <ListItem key={index}>
-              <Typography variant='body1'>{club}</Typography>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
+
+      <MyFavorites onNavigate={goToClub} recommendations={favoriteClubs} />
     </Container>
   );
 }

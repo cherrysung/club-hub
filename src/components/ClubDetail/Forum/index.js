@@ -1,17 +1,17 @@
-import { Box, Divider, Typography } from '@mui/material';
-import PostItem from './PostItem';
-import CreatePost from './CreatePost';
-import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Box, Divider, Typography } from "@mui/material";
+import PostItem from "./PostItem";
+import CreatePost from "./CreatePost";
+import { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   addPostDoc,
   addReplyDoc,
   deletePostDoc,
   deleteReplyDoc,
   getClubPosts,
-} from '../../../lib/firebase/firestore';
-import { useAuth } from '../../../providers/authProvider';
-import { useUser } from '../../../providers/userProvider';
+} from "../../../lib/firebase/firestore";
+import { useAuth } from "../../../providers/authProvider";
+import { useUser } from "../../../providers/userProvider";
 
 function Forum({ isLeader }) {
   const { clubId } = useParams();
@@ -54,15 +54,32 @@ function Forum({ isLeader }) {
     if (!auth || !user) return;
 
     const authorName = isAnon
-      ? 'Anonymous'
+      ? "Anonymous"
       : `${user.firstName} ${user.lastName}`;
     const postData = {
       authorId: auth.uid,
       content,
       authorName,
     };
-    await addPostDoc(clubId, postData);
-    setInvokeFetchPosts(true);
+
+    try {
+      await addPostDoc(clubId, postData);
+
+      const response = await fetch(
+        "https://us-central1-club-hub-e70ad.cloudfunctions.net/sendPostNotification",
+        {
+          method: "POST",
+          body: JSON.stringify({ clubId }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      }
+      setInvokeFetchPosts(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleDeleteReply = async (postId, replyId) => {
@@ -76,7 +93,7 @@ function Forum({ isLeader }) {
 
   const handleAddReply = async (postId, content, isAnon) => {
     const authorName = isAnon
-      ? 'Anonymous'
+      ? "Anonymous"
       : `${user.firstName} ${user.lastName}`;
 
     const replyData = {
@@ -95,7 +112,7 @@ function Forum({ isLeader }) {
 
   return (
     <Box>
-      <Typography variant='h5' mb={2} mt={4}>
+      <Typography variant="h5" mb={2} mt={4}>
         Club Forum
       </Typography>
       <CreatePost onSubmit={handleAddPost} />

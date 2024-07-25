@@ -1,20 +1,19 @@
-import { onDocumentCreated } from 'firebase-functions/v2/firestore';
-import * as admin from 'firebase-admin';
-import { onRequest } from 'firebase-functions/v2/https';
-import { transporter } from './my-nodemailer';
+const { onRequest } = require("firebase-functions/v2/https");
+const { transporter } = require("./my-nodemailer");
+const admin = require("firebase-admin");
 
 admin.initializeApp();
 const db = admin.firestore();
 
-export const sendPostNofication = onRequest(async (req, res) => {
+exports.sendPostNotification = onRequest({ cors: false }, async (req, res) => {
   const clubId = req.body.clubId;
 
   if (!clubId) {
-    return res.status(400).send('Missing test identifier');
+    return res.status(400).send("Missing test identifier");
   }
 
   try {
-    const clubDocRef = db.collection('clubs').doc(clubId);
+    const clubDocRef = db.collection("clubs").doc(clubId);
 
     const clubDoc = await clubDocRef.get();
     const clubData = clubDoc.data();
@@ -31,9 +30,9 @@ export const sendPostNofication = onRequest(async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).send('Email send successfully');
+    res.status(200).send("Email send successfully");
   } catch (error) {
-    console.error('Error sending email', error);
+    console.error("Error sending email", error);
     res.status(500).send(error.toString());
   }
 });
