@@ -1,15 +1,13 @@
-import { doc, getFirestore, onSnapshot } from "firebase/firestore";
-import { createContext, useContext, useEffect, useState } from "react";
-import { useAuth } from "./authProvider";
-import { app } from "../lib/firebase/init";
+import { doc, getFirestore, onSnapshot } from 'firebase/firestore';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useAuth } from './authProvider';
+import { app } from '../lib/firebase/init';
 
 export const UserContext = createContext({
   user: null,
 });
 
 export const useUser = () => useContext(UserContext);
-
-const TEMP_UID = "wC1lMegX6UMxuPS3QvpINrebxrn1";
 
 export const UserProvider = ({ children }) => {
   const { auth } = useAuth();
@@ -18,7 +16,12 @@ export const UserProvider = ({ children }) => {
   const firestore = getFirestore(app);
 
   useEffect(() => {
-    const userRef = doc(firestore, "users", TEMP_UID);
+    if (!auth) {
+      setUser(null);
+      return;
+    }
+
+    const userRef = doc(firestore, 'users', auth.uid);
 
     const unsub = onSnapshot(
       userRef,
@@ -29,11 +32,11 @@ export const UserProvider = ({ children }) => {
         }
       },
       (error) => {
-        console.error("Error listening to user document: ", error);
+        console.error('Error listening to user document: ', error);
       }
     );
     return unsub;
-  }, [firestore]);
+  }, [firestore, auth]);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>

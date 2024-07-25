@@ -1,19 +1,27 @@
-import { useMemo, useState } from "react";
-import { Box, Chip, Container, Grid, Typography } from "@mui/material";
-import mockData from "../lib/mock.json";
-import ClubItem from "../components/ClubItem";
-import { ACTIVITY_CATEGORIES, CAS_CATEGORIES } from "../lib/constants";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../providers/userProvider";
+import { useEffect, useMemo, useState } from 'react';
+import { Box, Button, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../providers/userProvider';
+import ProfileButton from '../components/base/ProfileButton';
+import { useAuth } from '../providers/authProvider';
+import ClubList from '../components/home/ClubList';
+import ClubFilters from '../components/home/ClubFilters';
+import { useClubs } from '../providers/clubsProvider';
+import { FilterList } from '@mui/icons-material';
 
 function Home() {
+  const { auth } = useAuth();
   const { user } = useUser();
+  const { clubs } = useClubs();
   const navigate = useNavigate();
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [showRecommends, setShowRecommends] = useState(false);
 
-  const handleSeeClub = (clubId) => {
-    navigate(`/club/${clubId}`);
-  };
+  useEffect(() => {
+    if (!auth) {
+      navigate('/');
+    }
+  }, [auth, navigate]);
 
   const handleSelectCategory = (value) => {
     const isSelected = selectedCategories.includes(value);
@@ -31,7 +39,7 @@ function Home() {
   };
 
   const filteredData = useMemo(() => {
-    let filteredClubs = mockData;
+    let filteredClubs = clubs;
 
     if (selectedCategories.length > 0) {
       filteredClubs = filteredClubs.filter((item) => {
@@ -42,89 +50,41 @@ function Home() {
       });
     }
 
+    if (showRecommends && user?.recommendations?.clubIds) {
+      filteredClubs = filteredClubs.filter((item) =>
+        user.recommendations.clubIds.includes(item.clubId)
+      );
+    }
+
     return filteredClubs;
-  }, [selectedCategories]);
+  }, [clubs, selectedCategories, showRecommends, user]);
 
   return (
-    <Container maxWidth="md" sx={{ height: "100vh" }}>
-      <Box sx={{ my: 4 }}>
+    <Container maxWidth='md' sx={{ minHeight: '100vh' }}>
+      <Box sx={{ mt: 4, mb: 6 }}>
         {user && (
-          <Typography variant="h5" mb={4}>
-            Hey, {user.firstName} {user.lastName}
-          </Typography>
+          <Box display='flex' alignItems='center' gap={2} mb={4}>
+            <Typography variant='h5'>
+              Hey, {user.firstName} {user.lastName}
+            </Typography>
+            <ProfileButton />
+          </Box>
         )}
-        <Box sx={{ mb: 4 }}>
-          <Box>
-            <Typography>CAS Requirement</Typography>
-            <Box
-              sx={{
-                display: "flex",
-                gap: 1,
-                py: 1,
-                mb: 2,
-                overflowX: "auto",
-                "&::-webkit-scrollbar": { height: "4px" },
-                "&::-webkit-scrollbar-track": {
-                  backgroundColor: "rgba(221,221,221,0.5)",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "rgba(0,0,0,0.2)",
-                  borderRadius: 10,
-                },
-              }}
-            >
-              {CAS_CATEGORIES.map((item) => (
-                <Chip
-                  onClick={() => handleSelectCategory(item.value)}
-                  key={item.value}
-                  label={item.label}
-                  variant={
-                    selectedCategories.includes(item.value)
-                      ? "filled"
-                      : "outlined"
-                  }
-                />
-              ))}
-            </Box>
-          </Box>
-          <Box>
-            <Typography>Type of Activity</Typography>
-            <Box
-              sx={{
-                display: "flex",
-                gap: 1,
-                py: 1,
-                overflowX: "auto",
-                "&::-webkit-scrollbar": { height: "4px" },
-                "&::-webkit-scrollbar-track": {
-                  backgroundColor: "rgba(221,221,221,0.5)",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "rgba(0,0,0,0.2)",
-                  borderRadius: 10,
-                },
-              }}
-            >
-              {ACTIVITY_CATEGORIES.map((item) => (
-                <Chip
-                  onClick={() => handleSelectCategory(item.value)}
-                  key={item.value}
-                  label={item.label}
-                  variant={
-                    selectedCategories.includes(item.value)
-                      ? "filled"
-                      : "outlined"
-                  }
-                />
-              ))}
-            </Box>
-          </Box>
+        <ClubFilters
+          onSelectCategory={handleSelectCategory}
+          selectedCategories={selectedCategories}
+        />
+        <Box display='flex' justifyContent='end' mb={1}>
+          <Button
+            size='small'
+            endIcon={<FilterList />}
+            variant={showRecommends ? 'text' : 'contained'}
+            onClick={() => setShowRecommends(!showRecommends)}
+          >
+            Recommend
+          </Button>
         </Box>
-        <Grid container spacing={2} columns={{ xs: 1, sm: 8, md: 12 }}>
-          {filteredData.map((club) => (
-            <ClubItem onSeeClub={handleSeeClub} club={club} key={club.clubId} />
-          ))}
-        </Grid>
+        <ClubList clubData={filteredData} />
       </Box>
     </Container>
   );

@@ -79,8 +79,6 @@ function Profile() {
             </ListItem>
           ))}
         </List>
-      </Box>
-      <Box sx={{ mt: 4 }}>
         <Typography variant="h5">My Favorites</Typography>
       </Box>
       <Box sx={{ mt: 2 }}>

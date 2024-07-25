@@ -9,11 +9,11 @@ import {
   Select,
   TextField,
   Typography,
-} from "@mui/material";
-import { useState } from "react";
-import { doc, getFirestore, updateDoc } from "firebase/firestore";
-import { app } from "../lib/firebase/init";
-import { useAuth } from "../providers/authProvider";
+} from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useAuth } from '../providers/authProvider';
+import { updateUserDoc } from '../lib/firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const GRADE_ITEMS = [
   { value: 9, label: 9 },
@@ -24,11 +24,18 @@ const GRADE_ITEMS = [
 
 function SignUp() {
   const { auth } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/');
+    }
+  }, [auth, navigate]);
 
   const [credentials, setCredentials] = useState({
-    firstName: "",
-    lastName: "",
-    grade: "",
+    firstName: '',
+    lastName: '',
+    grade: '',
   });
 
   const handleSignup = async () => {
@@ -38,9 +45,7 @@ function SignUp() {
     }
 
     try {
-      const firestore = getFirestore(app);
-      const userRef = doc(firestore, "users", auth.uid);
-      await updateDoc(userRef, {
+      await updateUserDoc(auth.uid, {
         ...credentials,
         favorites: [],
         recommendations: {},
@@ -51,31 +56,31 @@ function SignUp() {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth='md'>
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          height: "100vh",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          height: '100vh',
         }}
       >
-        <Box component="form">
+        <Box component='form'>
           <Paper
             elevation={3}
             sx={{
               padding: 5,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               gap: 2,
             }}
           >
-            <Typography variant="h5">Sign Up</Typography>
+            <Typography variant='h5'>Sign Up</Typography>
             <TextField
-              size="small"
+              size='small'
               required
-              label="First name"
+              label='First name'
               value={credentials.firstName}
               onChange={(e) =>
                 setCredentials({
@@ -85,9 +90,9 @@ function SignUp() {
               }
             />
             <TextField
-              size="small"
+              size='small'
               required
-              label="Last name"
+              label='Last name'
               value={credentials.lastName}
               onChange={(e) =>
                 setCredentials({
@@ -96,10 +101,10 @@ function SignUp() {
                 })
               }
             />
-            <FormControl required size="small">
+            <FormControl required size='small'>
               <InputLabel>Grade</InputLabel>
               <Select
-                label="Grade"
+                label='Grade'
                 value={credentials.grade}
                 onChange={(e) =>
                   setCredentials({
@@ -108,7 +113,7 @@ function SignUp() {
                   })
                 }
               >
-                <MenuItem disabled value="">
+                <MenuItem disabled value=''>
                   <em>Select a grade</em>
                 </MenuItem>
                 {GRADE_ITEMS.map((item) => (
@@ -118,7 +123,7 @@ function SignUp() {
                 ))}
               </Select>
             </FormControl>
-            <Button variant="contained" onClick={handleSignup}>
+            <Button variant='contained' onClick={handleSignup}>
               <span>Submit</span>
             </Button>
           </Paper>

@@ -8,12 +8,13 @@ import {
   GoogleAuthProvider,
   getAdditionalUserInfo,
   getAuth,
+  onAuthStateChanged,
   signInWithPopup,
   signOut,
-} from "firebase/auth";
-import { createContext, useContext, useState } from "react";
-import { app } from "../lib/firebase/init";
-import { doc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
+} from 'firebase/auth';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { app } from '../lib/firebase/init';
+import { setUserDoc } from '../lib/firebase/firestore';
 
 export const AuthContext = createContext({
   auth: null,
@@ -28,21 +29,25 @@ export const AuthProvider = ({ children }) => {
 
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
-  const firestore = getFirestore(app);
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(firebaseAuth, (user) => {
+      setAuth(user);
+    });
+
+    return unsub;
+  }, [firebaseAuth]);
 
   const signInWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(firebaseAuth, provider);
       const userAdditionalInfo = getAdditionalUserInfo(userCredential);
       const user = userCredential.user;
+
       if (user && userAdditionalInfo) {
         setAuth(user);
         if (userAdditionalInfo.isNewUser) {
-          const userRef = doc(firestore, "users", user.uid);
-          await setDoc(userRef, {
-            email: user.email,
-            createdAt: serverTimestamp(),
-          });
+          await setUserDoc(auth.uid, user.email);
           return true;
         }
       }
@@ -57,7 +62,7 @@ export const AuthProvider = ({ children }) => {
       await signOut(firebaseAuth);
       setAuth(null);
     } catch (error) {
-      console.error("Failed to sign out:", error);
+      console.error('Failed to sign out:', error);
       throw error;
     }
   };
