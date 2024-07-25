@@ -58,11 +58,17 @@ function Forum({ isLeader }) {
       : `${user.firstName} ${user.lastName}`;
     const postData = {
       authorId: auth.uid,
+      authorEmail: auth.email,
       content,
       authorName,
     };
-    await addPostDoc(clubId, postData);
-    setInvokeFetchPosts(true);
+
+    try {
+      await addPostDoc(clubId, postData);
+      setInvokeFetchPosts(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleDeleteReply = async (postId, replyId) => {
@@ -75,12 +81,15 @@ function Forum({ isLeader }) {
   };
 
   const handleAddReply = async (postId, content, isAnon) => {
+    if (!user || !auth) return;
+
     const authorName = isAnon
       ? 'Anonymous'
       : `${user.firstName} ${user.lastName}`;
 
     const replyData = {
       authorId: auth.uid,
+      authorEmail: auth.email,
       authorName,
       content,
     };
