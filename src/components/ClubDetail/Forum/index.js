@@ -58,12 +58,14 @@ function Forum({ isLeader }) {
       : `${user.firstName} ${user.lastName}`;
     const postData = {
       authorId: auth.uid,
+      authorEmail: auth.email,
       content,
       authorName,
     };
 
     try {
       await addPostDoc(clubId, postData);
+<<<<<<< HEAD
 
       const response = await fetch(
         "https://us-central1-club-hub-e70ad.cloudfunctions.net/sendPostNotification",
@@ -76,6 +78,8 @@ function Forum({ isLeader }) {
         const data = await response.json();
         console.log(data);
       }
+=======
+>>>>>>> 198530e26a98cf7c936a2ff62f54d4f49ae02037
       setInvokeFetchPosts(true);
     } catch (error) {
       console.error(error);
@@ -92,12 +96,15 @@ function Forum({ isLeader }) {
   };
 
   const handleAddReply = async (postId, content, isAnon) => {
+    if (!user || !auth) return;
+
     const authorName = isAnon
       ? "Anonymous"
       : `${user.firstName} ${user.lastName}`;
 
     const replyData = {
       authorId: auth.uid,
+      authorEmail: auth.email,
       authorName,
       content,
     };
