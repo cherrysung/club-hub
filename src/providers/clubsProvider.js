@@ -1,6 +1,6 @@
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { app } from '../lib/firebase/init';
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
+import { app } from "../lib/firebase/init";
 
 /**
  * The `clubsProvider` contains all `club` documents from Firestore
@@ -21,7 +21,7 @@ export const ClubsProvider = ({ children }) => {
   const [invokeFetchClubs, setInvokeFetchClubs] = useState(true);
 
   useEffect(() => {
-    const clubsColRef = collection(firestore, 'clubs');
+    const clubsColRef = collection(firestore, "clubs");
 
     const fetchClubs = async () => {
       if (!invokeFetchClubs) return;
@@ -42,7 +42,7 @@ export const ClubsProvider = ({ children }) => {
         setClubs(clubs);
         setInvokeFetchClubs(false);
       } catch (error) {
-        console.error('Failed to fetch clubs: ', error);
+        console.error("Failed to fetch clubs: ", error);
       }
     };
 
