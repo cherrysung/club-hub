@@ -1,5 +1,7 @@
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
   deleteDoc,
   doc,
@@ -54,6 +56,25 @@ export const updateUserDoc = async (uid, data) => {
     await updateDoc(userRef, data);
   } catch (error) {
     console.error('Failed to update user doc: ', error);
+    throw error;
+  }
+};
+
+export const updateFavorites = async (uid, clubId, isInFavorite) => {
+  const userRef = doc(firestore, 'users', uid);
+
+  try {
+    if (isInFavorite) {
+      await updateDoc(userRef, {
+        favorites: arrayRemove(clubId),
+      });
+    } else {
+      await updateDoc(userRef, {
+        favorites: arrayUnion(clubId),
+      });
+    }
+  } catch (error) {
+    console.error('Failed to update user favorites:', error);
     throw error;
   }
 };

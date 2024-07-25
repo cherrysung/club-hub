@@ -9,13 +9,10 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
 
-function ClubItem({ club, onSeeClub }) {
-  const [liked, setLiked] = useState(false);
-
+function ClubItem({ club, onSeeClub, onFavorite, isFavorite, isRecommend }) {
   const handleLikeClick = () => {
-    setLiked(!liked);
+    onFavorite(club.clubId);
   };
 
   return (
@@ -57,14 +54,27 @@ function ClubItem({ club, onSeeClub }) {
           sx={{
             position: 'absolute',
             bottom: 0,
+            width: '100%',
           }}
         >
           <IconButton onClick={handleLikeClick}>
-            {liked ? <Favorite color='error' /> : <FavoriteBorder />}
+            {isFavorite ? <Favorite color='error' /> : <FavoriteBorder />}
           </IconButton>
           <IconButton onClick={() => onSeeClub(club.clubId)}>
             <ArrowForward />
           </IconButton>
+          {isRecommend && (
+            <Typography
+              component='p'
+              variant='overline'
+              color='primary'
+              flex={1}
+              textAlign='right'
+              paddingRight={1}
+            >
+              Recommend
+            </Typography>
+          )}
         </CardActions>
       </Card>
     </Grid>

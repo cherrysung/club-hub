@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HomeButton from '../components/base/HomeButton';
 import ProfileButton from '../components/base/ProfileButton';
 import { useClubs } from '../providers/clubsProvider';
@@ -13,11 +13,18 @@ function Club() {
   const { clubs } = useClubs();
   const { auth } = useAuth();
   const [selected, setSelected] = useState(param.clubId ?? '');
+  const containerRef = useRef(null);
 
   const handleSelectClub = (clubId) => {
     setSelected(clubId);
     navigate(`/club/${clubId}`);
   };
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, [selected]);
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -70,7 +77,11 @@ function Club() {
           </Box>
         ))}
       </Box>
-      <Box flex={1} sx={{ height: '100vh', overflowY: 'auto' }}>
+      <Box
+        ref={containerRef}
+        flex={1}
+        sx={{ height: '100vh', overflowY: 'auto' }}
+      >
         <Outlet />
       </Box>
     </Box>

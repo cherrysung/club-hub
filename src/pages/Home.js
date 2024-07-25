@@ -8,6 +8,7 @@ import ClubList from '../components/home/ClubList';
 import ClubFilters from '../components/home/ClubFilters';
 import { useClubs } from '../providers/clubsProvider';
 import { FilterList } from '@mui/icons-material';
+import { updateFavorites } from '../lib/firebase/firestore';
 
 function Home() {
   const { auth } = useAuth();
@@ -22,6 +23,16 @@ function Home() {
       navigate('/');
     }
   }, [auth, navigate]);
+
+  const handleFavorite = async (clubId) => {
+    const isInFavorite = user.favorites.includes(clubId);
+
+    try {
+      await updateFavorites(auth.uid, clubId, isInFavorite);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSelectCategory = (value) => {
     const isSelected = selectedCategories.includes(value);
@@ -78,13 +89,17 @@ function Home() {
           <Button
             size='small'
             endIcon={<FilterList />}
-            variant={showRecommends ? 'text' : 'contained'}
+            variant={showRecommends ? 'contained' : 'text'}
             onClick={() => setShowRecommends(!showRecommends)}
           >
             Recommend
           </Button>
         </Box>
-        <ClubList clubData={filteredData} />
+        <ClubList
+          clubData={filteredData}
+          onFavorite={handleFavorite}
+          user={user}
+        />
       </Box>
     </Container>
   );
