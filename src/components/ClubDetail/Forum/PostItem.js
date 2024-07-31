@@ -16,8 +16,11 @@ function PostItem({
   onDeleteReply,
   onAddReply,
   isLeader,
+  authorEmail,
+  leaderEmails,
 }) {
   const [addReply, setAddReply] = useState(false);
+  const isLeaderPost = leaderEmails.includes(authorEmail);
 
   return (
     <Box mb={3}>
@@ -27,11 +30,11 @@ function PostItem({
           display='flex'
           alignItems='center'
           gap={0.5}
-          color={isLeader ? 'primary.main' : 'GrayText'}
+          color={isLeaderPost ? 'primary.main' : 'GrayText'}
         >
           <Person fontSize='small' />
           <Typography variant='body2'>
-            {name} {isLeader && '(Leader)'}
+            {name} {isLeaderPost && '(Leader)'}
           </Typography>
         </Box>
         <Box display='flex' alignItems='center' gap={0.5} color='GrayText'>
@@ -56,7 +59,14 @@ function PostItem({
         {replies &&
           replies.length > 0 &&
           replies.map(
-            ({ replyId, content, authorName, createdAt, authorId }) => (
+            ({
+              replyId,
+              content,
+              authorName,
+              createdAt,
+              authorId,
+              authorEmail,
+            }) => (
               <ReplyItem
                 key={replyId}
                 content={content}
@@ -65,6 +75,7 @@ function PostItem({
                 canDelete={authorId === currentAuthUid}
                 onDelete={() => onDeleteReply(postId, replyId)}
                 isLeader={isLeader}
+                isLeaderPost={leaderEmails.includes(authorEmail)}
               />
             )
           )}

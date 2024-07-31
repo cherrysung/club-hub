@@ -1,55 +1,16 @@
-<<<<<<< HEAD
-const { onRequest } = require("firebase-functions/v2/https");
-const { transporter } = require("./my-nodemailer");
-const admin = require("firebase-admin");
-=======
 const nodemailer = require('nodemailer');
 const admin = require('firebase-admin');
 const { onDocumentCreated } = require('firebase-functions/v2/firestore');
->>>>>>> 198530e26a98cf7c936a2ff62f54d4f49ae02037
 
 admin.initializeApp();
 const db = admin.firestore();
 
-<<<<<<< HEAD
-exports.sendPostNotification = onRequest({ cors: false }, async (req, res) => {
-  const clubId = req.body.clubId;
-
-  if (!clubId) {
-    return res.status(400).send("Missing test identifier");
-  }
-
-  try {
-    const clubDocRef = db.collection("clubs").doc(clubId);
-
-    const clubDoc = await clubDocRef.get();
-    const clubData = clubDoc.data();
-
-    if (!clubData) return;
-
-    const clubLeaders = clubData.club_leaders.map((leader) => leader.email);
-
-    const mailOptions = {
-      from: process.env.GMAIL_EMAIL,
-      to: clubLeaders,
-      subject: `New post in ${clubData.club_name}`,
-      text: `You have a new post in the ${clubData.club_name} forum. Check it out!`,
-    };
-
-    await transporter.sendMail(mailOptions);
-    res.status(200).send("Email send successfully");
-  } catch (error) {
-    console.error("Error sending email", error);
-    res.status(500).send(error.toString());
-  }
-=======
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.GMAIL_EMAIL,
     pass: process.env.GMAIL_PASSWORD,
   },
->>>>>>> 198530e26a98cf7c936a2ff62f54d4f49ae02037
 });
 
 // send email to club leaders when new post created on club forum

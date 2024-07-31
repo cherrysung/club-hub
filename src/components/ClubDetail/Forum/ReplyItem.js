@@ -8,6 +8,7 @@ function ReplyItem({
   canDelete,
   onDelete,
   isLeader,
+  isLeaderPost,
 }) {
   return (
     <Box mb={3}>
@@ -17,11 +18,11 @@ function ReplyItem({
           display='flex'
           alignItems='center'
           gap={0.5}
-          color={isLeader ? 'primary.main' : 'GrayText'}
+          color={isLeaderPost ? 'primary.main' : 'GrayText'}
         >
           <Person fontSize='small' />
           <Typography variant='body2'>
-            {name} {isLeader && '(Leader)'}
+            {name} {isLeaderPost && '(Leader)'}
           </Typography>
         </Box>
         <Box display='flex' alignItems='center' gap={0.5} color='GrayText'>
