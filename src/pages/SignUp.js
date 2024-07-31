@@ -50,6 +50,7 @@ function SignUp() {
         favorites: [],
         recommendations: {},
       });
+      navigate('/recommend');
     } catch (error) {
       console.error(error);
     }

@@ -1,23 +1,18 @@
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/authProvider';
-import { useEffect } from 'react';
 
 function Landing() {
   const navigate = useNavigate();
-  const { signInWithGoogle, auth } = useAuth();
-
-  useEffect(() => {
-    if (auth) {
-      navigate('/home');
-    }
-  }, [auth, navigate]);
+  const { signInWithGoogle } = useAuth();
 
   const handleSignin = async () => {
     try {
       const isNewUser = await signInWithGoogle();
       if (isNewUser) {
         navigate('/signup');
+      } else {
+        navigate('/home');
       }
     } catch (error) {
       console.error('Failed to sign in: ', error);

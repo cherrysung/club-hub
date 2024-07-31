@@ -45,12 +45,13 @@ export const AuthProvider = ({ children }) => {
       const user = userCredential.user;
 
       if (user && userAdditionalInfo) {
-        setAuth(user);
         if (userAdditionalInfo.isNewUser) {
-          await setUserDoc(auth.uid, user.email);
+          await setUserDoc(user.uid, user.email);
           return true;
         }
       }
+
+      setAuth(user);
     } catch (error) {
       console.error(error);
       throw error;
