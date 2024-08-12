@@ -6,9 +6,11 @@
 
 import {
   GoogleAuthProvider,
+  browserLocalPersistence,
   getAdditionalUserInfo,
   getAuth,
   onAuthStateChanged,
+  setPersistence,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
@@ -32,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(firebaseAuth, (user) => {
-      setAuth(user);
+      setAuth(user || null);
     });
 
     return unsub;
@@ -40,6 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
+      await setPersistence(firebaseAuth, browserLocalPersistence);
       const userCredential = await signInWithPopup(firebaseAuth, provider);
       const userAdditionalInfo = getAdditionalUserInfo(userCredential);
       const user = userCredential.user;
