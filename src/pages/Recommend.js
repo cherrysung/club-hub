@@ -23,9 +23,11 @@ import {
 import { useEffect, useState } from 'react';
 import { updateRecommendations } from '../lib/firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../providers/userProvider';
 
 function Recommend() {
   const { auth } = useAuth();
+  const { user } = useUser();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [input, setInputs] = useState({
@@ -75,7 +77,7 @@ function Recommend() {
     if (!isValid) return;
 
     const payload = {
-      Year: 12,
+      Year: user.grade,
       Creativity: input.Creativity ? 1 : 0,
       Activity: input.Activity ? 1 : 0,
       Service: input.Service ? 1 : 0,
