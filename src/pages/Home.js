@@ -17,7 +17,11 @@ function Home() {
   const { user } = useUser();
   const { clubs } = useClubs();
   const navigate = useNavigate();
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState(() => {
+    // Load persisted state from session storage
+    const savedCategories = sessionStorage.getItem('selectedCategories');
+    return savedCategories ? JSON.parse(savedCategories) : [];
+  });
   const [showRecommends, setShowRecommends] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -51,6 +55,21 @@ function Home() {
       setSelectedCategories([...selectedCategories, value]);
     }
   };
+
+  const handleClearCategory = (values) => {
+    const filteredCategories = selectedCategories.filter(
+      (category) => !values.includes(category)
+    );
+    setSelectedCategories(filteredCategories);
+  };
+
+  useEffect(() => {
+    // Save selectedCategories to session storage whenever it changes
+    sessionStorage.setItem(
+      'selectedCategories',
+      JSON.stringify(selectedCategories)
+    );
+  }, [selectedCategories]);
 
   const filteredData = useMemo(() => {
     let filteredClubs = clubs;
@@ -96,6 +115,7 @@ function Home() {
         )}
         <ClubFilters
           onSelectCategory={handleSelectCategory}
+          onClearCategory={handleClearCategory}
           selectedCategories={selectedCategories}
         />
         <Box display='flex' justifyContent='end' mb={1}>
