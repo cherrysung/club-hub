@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useClubs } from '../providers/clubsProvider';
 import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../providers/authProvider';
-import { updateFavorites } from '../lib/firebase/firestore';
+import { updateFavorites, updateUserDoc } from '../lib/firebase/firestore';
 
 function Profile() {
   const navigate = useNavigate();
@@ -81,6 +81,14 @@ function Profile() {
     }
   };
 
+  const handleSave = async (data) => {
+    try {
+      await updateUserDoc(auth.uid, data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     const recommendedClubs = getRecommendedClubs();
     setRecommendedClubs(recommendedClubs);
@@ -93,7 +101,7 @@ function Profile() {
 
   return (
     <Container maxWidth='md' sx={{ mb: 12 }}>
-      <MyInfo user={user} onSignout={signout} />
+      {user && <MyInfo user={user} onSignout={signout} onSave={handleSave} />}
 
       <MyRecommendations
         onNavigate={goToClub}

@@ -14,13 +14,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../providers/authProvider';
 import { updateUserDoc } from '../lib/firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
-const GRADE_ITEMS = [
-  { value: 9, label: 9 },
-  { value: 10, label: 10 },
-  { value: 11, label: 11 },
-  { value: 12, label: 12 },
-];
+import { GRADE_ITEMS } from '../lib/constants';
 
 function SignUp() {
   const { auth } = useAuth();
