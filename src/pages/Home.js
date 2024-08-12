@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Pagination, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../providers/userProvider';
 import ProfileButton from '../components/base/ProfileButton';
@@ -10,6 +10,8 @@ import { useClubs } from '../providers/clubsProvider';
 import { FilterList } from '@mui/icons-material';
 import { updateFavorites } from '../lib/firebase/firestore';
 
+const ITEMS_PER_PAGE = 12;
+
 function Home() {
   const { auth } = useAuth();
   const { user } = useUser();
@@ -17,6 +19,7 @@ function Home() {
   const navigate = useNavigate();
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [showRecommends, setShowRecommends] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (!auth) {
@@ -70,6 +73,16 @@ function Home() {
     return filteredClubs;
   }, [clubs, selectedCategories, showRecommends, user]);
 
+  const paginatedData = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredData.slice(startIndex, endIndex);
+  }, [currentPage, filteredData]);
+
+  const handlePageChange = (_, page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <Container maxWidth='md' sx={{ minHeight: '100vh' }}>
       <Box sx={{ mt: 4, mb: 6 }}>
@@ -96,10 +109,18 @@ function Home() {
           </Button>
         </Box>
         <ClubList
-          clubData={filteredData}
+          clubData={paginatedData}
           onFavorite={handleFavorite}
           user={user}
         />
+        <Box display='flex' justifyContent='center' mt={4}>
+          <Pagination
+            count={Math.ceil(filteredData.length / ITEMS_PER_PAGE)}
+            page={currentPage}
+            onChange={handlePageChange}
+            color='primary'
+          />
+        </Box>
       </Box>
     </Container>
   );
