@@ -1,6 +1,6 @@
-import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { createContext, useContext, useEffect, useState } from "react";
-import { app } from "../lib/firebase/init";
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { app } from '../lib/firebase/init';
 
 /**
  * The `clubsProvider` contains all `club` documents from Firestore
@@ -16,12 +16,29 @@ export const ClubsContext = createContext({
 
 export const useClubs = () => useContext(ClubsContext);
 
+const getCurrentSemester = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  /**
+   * Semester 1: May 14 ~ Dec 3
+   * Semester 2: Dec 4 ~ May 13
+   */
+  const sem1Start = new Date(year, 4, 14); // May 14
+  const sem1End = new Date(year, 11, 3); // Dec 3
+
+  if (now >= sem1Start && now <= sem1End) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export const ClubsProvider = ({ children }) => {
   const [clubs, setClubs] = useState([]);
   const [invokeFetchClubs, setInvokeFetchClubs] = useState(true);
 
   useEffect(() => {
-    const clubsColRef = collection(firestore, "clubs");
+    const clubsColRef = collection(firestore, 'clubs');
 
     const fetchClubs = async () => {
       if (!invokeFetchClubs) return;
@@ -37,12 +54,31 @@ export const ClubsProvider = ({ children }) => {
           });
         });
 
-        clubs.sort((a, b) => a.club_name.localeCompare(b.club_name));
+        const isSem1 = getCurrentSemester();
 
-        setClubs(clubs);
+        const filteredClubs = clubs.filter((club) => {
+          const { semesters } = club;
+          if (
+            semesters === 'Both, optional' ||
+            semesters === 'Both, mandatory'
+          ) {
+            return true;
+          }
+          if (semesters === 'Sem 1 only' && isSem1) {
+            return true;
+          }
+          if (semesters === 'Sem 2 only' && !isSem1) {
+            return true;
+          }
+          return false;
+        });
+
+        filteredClubs.sort((a, b) => a.club_name.localeCompare(b.club_name));
+
+        setClubs(filteredClubs);
         setInvokeFetchClubs(false);
       } catch (error) {
-        console.error("Failed to fetch clubs: ", error);
+        console.error('Failed to fetch clubs: ', error);
       }
     };
 
