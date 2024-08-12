@@ -1,9 +1,30 @@
-import { Box, Chip, Typography } from '@mui/material';
+import { Box, Chip, IconButton, Typography } from '@mui/material';
 import { ACTIVITY_CATEGORIES, CAS_CATEGORIES } from '../../../lib/constants';
+import { Cancel } from '@mui/icons-material';
 
-function ClubFilters({ onSelectCategory, selectedCategories }) {
+function ClubFilters({
+  onSelectCategory,
+  selectedCategories,
+  onClearCategory,
+}) {
+  const isCASSelected = CAS_CATEGORIES.some((item) =>
+    selectedCategories.includes(item.value)
+  );
+  const isActivitySelected = ACTIVITY_CATEGORIES.some((item) =>
+    selectedCategories.includes(item.value)
+  );
+
   const handleSelectCategory = (category) => {
     onSelectCategory(category);
+  };
+
+  const handleClearCategory = (category) => {
+    if (category === 'CAS') {
+      onClearCategory(CAS_CATEGORIES.map((item) => item.value));
+    }
+    if (category === 'Activity') {
+      onClearCategory(ACTIVITY_CATEGORIES.map((item) => item.value));
+    }
   };
 
   return (
@@ -13,6 +34,7 @@ function ClubFilters({ onSelectCategory, selectedCategories }) {
         <Box
           sx={{
             display: 'flex',
+            alignItems: 'center',
             gap: 1,
             py: 1,
             mb: 2,
@@ -37,6 +59,11 @@ function ClubFilters({ onSelectCategory, selectedCategories }) {
               }
             />
           ))}
+          {isCASSelected && (
+            <IconButton size='small' onClick={() => handleClearCategory('CAS')}>
+              <Cancel />
+            </IconButton>
+          )}
         </Box>
       </Box>
       <Box>
@@ -67,6 +94,14 @@ function ClubFilters({ onSelectCategory, selectedCategories }) {
               }
             />
           ))}
+          {isActivitySelected && (
+            <IconButton
+              size='small'
+              onClick={() => handleClearCategory('Activity')}
+            >
+              <Cancel />
+            </IconButton>
+          )}
         </Box>
       </Box>
     </Box>
