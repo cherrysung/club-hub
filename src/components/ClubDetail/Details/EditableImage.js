@@ -59,6 +59,7 @@ function Editableimage({ src, onEdit }) {
         overflow: 'hidden',
         width: '100%',
         height: '100%',
+        maxHeight: 350,
         position: 'relative',
       }}
     >

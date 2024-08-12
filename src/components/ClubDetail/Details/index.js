@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import Editableimage from './EditableImage';
 import { updateClub, updateClubImage } from '../../../lib/firebase/firestore';
 import EditableText from './EditableText';
+import { NO_IMAGE_SRC } from '../../../lib/constants';
 
 function Details({ club, setInvokeFetchClubs, isLeader }) {
   const handleUploadImage = async (newFile) => {
@@ -46,7 +47,10 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
         </Grid>
         <Grid item sm={2} md={1}>
           {isLeader ? (
-            <Editableimage src={club.imageSrc} onEdit={handleUploadImage} />
+            <Editableimage
+              src={club.imageSrc || NO_IMAGE_SRC}
+              onEdit={handleUploadImage}
+            />
           ) : (
             <Box
               sx={{
@@ -54,10 +58,11 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
                 overflow: 'hidden',
                 width: '100%',
                 height: '100%',
+                maxHeight: 350,
               }}
             >
               <img
-                src={club.imageSrc}
+                src={club.imageSrc || NO_IMAGE_SRC}
                 alt='club'
                 style={{
                   width: '100%',

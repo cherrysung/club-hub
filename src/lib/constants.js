@@ -1,3 +1,5 @@
+export const NO_IMAGE_SRC = '/images/no-image.png';
+
 export const CAS_CATEGORIES = [
   { label: 'Creativity', value: 'Creativity' },
   { label: 'Creativity & Activity', value: 'Creativity & Activity' },
