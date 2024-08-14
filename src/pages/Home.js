@@ -104,7 +104,10 @@ function Home() {
 
   return (
     <Container maxWidth='md' sx={{ minHeight: '100vh' }}>
-      <Box sx={{ mt: 4, mb: 6 }}>
+      <Box height={30} sx={{ mt: 4 }}>
+        <img alt='clubhub logo' src='/images/clubhub-logo.png' height='100%' />
+      </Box>
+      <Box sx={{ mt: 2, mb: 6 }}>
         {user && (
           <Box display='flex' alignItems='center' gap={2} mb={4}>
             <Typography variant='h5'>

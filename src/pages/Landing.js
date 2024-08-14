@@ -24,6 +24,7 @@ function Landing() {
       <Box
         sx={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           height: '100%',
@@ -40,8 +41,16 @@ function Landing() {
             gap: 5,
           }}
         >
-          <Typography variant='h5'>Welcome to Clubhub</Typography>
-          <Button onClick={handleSignin}>Sign In</Button>
+          <Box height={50}>
+            <img
+              alt='clubhub logo'
+              src='/images/clubhub-logo.png'
+              height='100%'
+            />
+          </Box>
+          <Button onClick={handleSignin} variant='contained'>
+            Sign In
+          </Button>
         </Paper>
       </Box>
     </Container>
