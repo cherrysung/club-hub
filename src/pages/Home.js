@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Pagination, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../providers/userProvider';
 import ProfileButton from '../components/base/ProfileButton';
@@ -10,13 +10,20 @@ import { useClubs } from '../providers/clubsProvider';
 import { FilterList } from '@mui/icons-material';
 import { updateFavorites } from '../lib/firebase/firestore';
 
+const ITEMS_PER_PAGE = 12;
+
 function Home() {
   const { auth } = useAuth();
   const { user } = useUser();
   const { clubs } = useClubs();
   const navigate = useNavigate();
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState(() => {
+    // Load persisted state from session storage
+    const savedCategories = sessionStorage.getItem('selectedCategories');
+    return savedCategories ? JSON.parse(savedCategories) : [];
+  });
   const [showRecommends, setShowRecommends] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (!auth) {
@@ -49,6 +56,21 @@ function Home() {
     }
   };
 
+  const handleClearCategory = (values) => {
+    const filteredCategories = selectedCategories.filter(
+      (category) => !values.includes(category)
+    );
+    setSelectedCategories(filteredCategories);
+  };
+
+  useEffect(() => {
+    // Save selectedCategories to session storage whenever it changes
+    sessionStorage.setItem(
+      'selectedCategories',
+      JSON.stringify(selectedCategories)
+    );
+  }, [selectedCategories]);
+
   const filteredData = useMemo(() => {
     let filteredClubs = clubs;
 
@@ -70,9 +92,22 @@ function Home() {
     return filteredClubs;
   }, [clubs, selectedCategories, showRecommends, user]);
 
+  const paginatedData = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredData.slice(startIndex, endIndex);
+  }, [currentPage, filteredData]);
+
+  const handlePageChange = (_, page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <Container maxWidth='md' sx={{ minHeight: '100vh' }}>
-      <Box sx={{ mt: 4, mb: 6 }}>
+      <Box height={30} sx={{ mt: 4 }}>
+        <img alt='clubhub logo' src='/images/clubhub-logo.png' height='100%' />
+      </Box>
+      <Box sx={{ mt: 2, mb: 6 }}>
         {user && (
           <Box display='flex' alignItems='center' gap={2} mb={4}>
             <Typography variant='h5'>
@@ -83,6 +118,7 @@ function Home() {
         )}
         <ClubFilters
           onSelectCategory={handleSelectCategory}
+          onClearCategory={handleClearCategory}
           selectedCategories={selectedCategories}
         />
         <Box display='flex' justifyContent='end' mb={1}>
@@ -96,10 +132,18 @@ function Home() {
           </Button>
         </Box>
         <ClubList
-          clubData={filteredData}
+          clubData={paginatedData}
           onFavorite={handleFavorite}
           user={user}
         />
+        <Box display='flex' justifyContent='center' mt={4}>
+          <Pagination
+            count={Math.ceil(filteredData.length / ITEMS_PER_PAGE)}
+            page={currentPage}
+            onChange={handlePageChange}
+            color='primary'
+          />
+        </Box>
       </Box>
     </Container>
   );

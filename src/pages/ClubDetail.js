@@ -37,7 +37,7 @@ function ClubDetail() {
               setInvokeFetchClubs={setInvokeFetchClubs}
               isLeader={isLeader}
             />
-            <Forum isLeader={isLeader} />
+            <Forum isLeader={isLeader} club={club} />
           </>
         )}
       </Box>

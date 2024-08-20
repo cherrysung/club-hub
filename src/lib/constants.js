@@ -1,3 +1,12 @@
+export const NO_IMAGE_SRC = '/images/no-image.png';
+
+export const GRADE_ITEMS = [
+  { value: 9, label: 9 },
+  { value: 10, label: 10 },
+  { value: 11, label: 11 },
+  { value: 12, label: 12 },
+];
+
 export const CAS_CATEGORIES = [
   { label: 'Creativity', value: 'Creativity' },
   { label: 'Creativity & Activity', value: 'Creativity & Activity' },

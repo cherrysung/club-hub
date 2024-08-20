@@ -1,23 +1,18 @@
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../providers/authProvider';
-import { useEffect } from 'react';
 
 function Landing() {
   const navigate = useNavigate();
-  const { signInWithGoogle, auth } = useAuth();
-
-  useEffect(() => {
-    if (auth) {
-      navigate('/home');
-    }
-  }, [auth, navigate]);
+  const { signInWithGoogle } = useAuth();
 
   const handleSignin = async () => {
     try {
       const isNewUser = await signInWithGoogle();
       if (isNewUser) {
         navigate('/signup');
+      } else {
+        navigate('/home');
       }
     } catch (error) {
       console.error('Failed to sign in: ', error);
@@ -29,6 +24,7 @@ function Landing() {
       <Box
         sx={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           height: '100%',
@@ -45,8 +41,16 @@ function Landing() {
             gap: 5,
           }}
         >
-          <Typography variant='h5'>Welcome to Clubhub</Typography>
-          <Button onClick={handleSignin}>Sign In</Button>
+          <Box height={50}>
+            <img
+              alt='clubhub logo'
+              src='/images/clubhub-logo.png'
+              height='100%'
+            />
+          </Box>
+          <Button onClick={handleSignin} variant='contained'>
+            Sign In
+          </Button>
         </Paper>
       </Box>
     </Container>

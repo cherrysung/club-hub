@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  CircularProgress,
   Container,
   FormControl,
   FormControlLabel,
@@ -22,11 +23,13 @@ import {
 import { useEffect, useState } from 'react';
 import { updateRecommendations } from '../lib/firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../providers/userProvider';
 
 function Recommend() {
   const { auth } = useAuth();
+  const { user } = useUser();
   const navigate = useNavigate();
-
+  const [isLoading, setLoading] = useState(false);
   const [input, setInputs] = useState({
     Creativity: false,
     Activity: false,
@@ -74,7 +77,7 @@ function Recommend() {
     if (!isValid) return;
 
     const payload = {
-      Year: 12,
+      Year: user.grade,
       Creativity: input.Creativity ? 1 : 0,
       Activity: input.Activity ? 1 : 0,
       Service: input.Service ? 1 : 0,
@@ -95,6 +98,7 @@ function Recommend() {
     };
 
     try {
+      setLoading(true);
       const response = await fetch(
         'https://clubrec-3e4f153fcece.herokuapp.com/recommend',
         {
@@ -113,6 +117,8 @@ function Recommend() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -255,7 +261,18 @@ function Recommend() {
                 });
               }}
             />
-            <Button variant='contained' onClick={handleSubmit}>
+            <Button
+              variant='contained'
+              onClick={handleSubmit}
+              disabled={isLoading}
+            >
+              {isLoading && (
+                <CircularProgress
+                  size={15}
+                  color='inherit'
+                  sx={{ marginRight: 1 }}
+                />
+              )}
               <span>Submit</span>
             </Button>
           </Paper>

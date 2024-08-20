@@ -1,19 +1,19 @@
-import { Box, Divider, Typography } from "@mui/material";
-import PostItem from "./PostItem";
-import CreatePost from "./CreatePost";
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Box, Divider, Typography } from '@mui/material';
+import PostItem from './PostItem';
+import CreatePost from './CreatePost';
+import { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   addPostDoc,
   addReplyDoc,
   deletePostDoc,
   deleteReplyDoc,
   getClubPosts,
-} from "../../../lib/firebase/firestore";
-import { useAuth } from "../../../providers/authProvider";
-import { useUser } from "../../../providers/userProvider";
+} from '../../../lib/firebase/firestore';
+import { useAuth } from '../../../providers/authProvider';
+import { useUser } from '../../../providers/userProvider';
 
-function Forum({ isLeader }) {
+function Forum({ isLeader, club }) {
   const { clubId } = useParams();
   const { auth } = useAuth();
   const { user } = useUser();
@@ -54,7 +54,7 @@ function Forum({ isLeader }) {
     if (!auth || !user) return;
 
     const authorName = isAnon
-      ? "Anonymous"
+      ? 'Anonymous'
       : `${user.firstName} ${user.lastName}`;
     const postData = {
       authorId: auth.uid,
@@ -65,21 +65,6 @@ function Forum({ isLeader }) {
 
     try {
       await addPostDoc(clubId, postData);
-<<<<<<< HEAD
-
-      const response = await fetch(
-        "https://us-central1-club-hub-e70ad.cloudfunctions.net/sendPostNotification",
-        {
-          method: "POST",
-          body: JSON.stringify({ clubId }),
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-      }
-=======
->>>>>>> 198530e26a98cf7c936a2ff62f54d4f49ae02037
       setInvokeFetchPosts(true);
     } catch (error) {
       console.error(error);
@@ -99,7 +84,7 @@ function Forum({ isLeader }) {
     if (!user || !auth) return;
 
     const authorName = isAnon
-      ? "Anonymous"
+      ? 'Anonymous'
       : `${user.firstName} ${user.lastName}`;
 
     const replyData = {
@@ -119,7 +104,7 @@ function Forum({ isLeader }) {
 
   return (
     <Box>
-      <Typography variant="h5" mb={2} mt={4}>
+      <Typography variant='h5' mb={2} mt={4}>
         Club Forum
       </Typography>
       <CreatePost onSubmit={handleAddPost} />
@@ -128,7 +113,15 @@ function Forum({ isLeader }) {
         {auth &&
           posts.length > 0 &&
           posts.map(
-            ({ content, authorName, createdAt, postId, authorId, replies }) => (
+            ({
+              content,
+              authorName,
+              authorEmail,
+              createdAt,
+              postId,
+              authorId,
+              replies,
+            }) => (
               <PostItem
                 key={postId}
                 postId={postId}
@@ -142,6 +135,8 @@ function Forum({ isLeader }) {
                 onDeleteReply={handleDeleteReply}
                 onAddReply={handleAddReply}
                 isLeader={isLeader}
+                authorEmail={authorEmail}
+                leaderEmails={club.club_leaders.map((leader) => leader.email)}
               />
             )
           )}
