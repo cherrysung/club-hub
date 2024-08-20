@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 const nodemailer = require("nodemailer");
 const admin = require("firebase-admin");
 const { onDocumentCreated } = require("firebase-functions/v2/firestore");
-=======
-const nodemailer = require('nodemailer');
-const admin = require('firebase-admin');
-const { onDocumentCreated } = require('firebase-functions/v2/firestore');
->>>>>>> d0a86f7df37a2273e4da2b98c7ccea715d426141
 
 admin.initializeApp();
 const db = admin.firestore();
