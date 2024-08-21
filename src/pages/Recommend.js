@@ -10,20 +10,20 @@ import {
   FormLabel,
   Paper,
   Typography,
-} from '@mui/material';
-import FormSelectField from '../components/base/FormSelectField';
-import { useAuth } from '../providers/authProvider';
+} from "@mui/material";
+import FormSelectField from "../components/base/FormSelectField";
+import { useAuth } from "../providers/authProvider";
 import {
   ACTIVITY_CATEGORIES,
   RELEVANT_SUBJECT_CATEGORIES,
   SEMESTER_CATEGORIES,
   TARGET_SERVICE_CATEGORIES,
   TIME_COMM_OPTIONS,
-} from '../lib/constants';
-import { useEffect, useState } from 'react';
-import { updateRecommendations } from '../lib/firebase/firestore';
-import { useNavigate } from 'react-router-dom';
-import { useUser } from '../providers/userProvider';
+} from "../lib/constants";
+import { useEffect, useState } from "react";
+import { updateRecommendations } from "../lib/firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../providers/userProvider";
 
 function Recommend() {
   const { auth } = useAuth();
@@ -34,11 +34,11 @@ function Recommend() {
     Creativity: false,
     Activity: false,
     Service: false,
-    'Type of Activity': '',
-    'Service Target Group': '',
-    'Relevant Subject': '',
-    'Time Commitment': '',
-    Semesters: '',
+    "Type of Activity": "",
+    "Service Target Group": "",
+    "Relevant Subject": "",
+    "Time Commitment": "",
+    Semesters: "",
   });
   const [isInvalid, setInvalid] = useState({
     cas: false,
@@ -47,7 +47,7 @@ function Recommend() {
 
   useEffect(() => {
     if (!auth) {
-      navigate('/');
+      navigate("/");
     }
   }, [auth, navigate]);
 
@@ -81,30 +81,30 @@ function Recommend() {
       Creativity: input.Creativity ? 1 : 0,
       Activity: input.Activity ? 1 : 0,
       Service: input.Service ? 1 : 0,
-      'Type of Activity': input['Type of Activity'] || null,
-      'Service Target Group': input['Service Target Group'] || null,
-      'Relevant Subject': input['Relevant Subject'] || null,
-      'Time commitment': Number(input['Time Commitment']),
-      'Semester 1 availability':
-        input.Semesters === '1' || input.Semesters === 'both' ? 1 : 0,
-      'Semester 2 availability':
-        input.Semesters === '2' || input.Semesters === 'both' ? 1 : 0,
-      'Outside of school time used': 0,
-      'Like to work together or not': 0,
-      'Introvert or not': 0,
-      'Writing ability': 0,
-      'Organization skills': 0,
-      'Self management skills': 0,
+      "Type of Activity": input["Type of Activity"] || null,
+      "Service Target Group": input["Service Target Group"] || null,
+      "Relevant Subject": input["Relevant Subject"] || null,
+      "Time commitment": Number(input["Time Commitment"]),
+      "Semester 1 availability":
+        input.Semesters === "1" || input.Semesters === "both" ? 1 : 0,
+      "Semester 2 availability":
+        input.Semesters === "2" || input.Semesters === "both" ? 1 : 0,
+      "Outside of school time used": 0,
+      "Like to work together or not": 0,
+      "Introvert or not": 0,
+      "Writing ability": 0,
+      "Organization skills": 0,
+      "Self management skills": 0,
     };
 
     try {
       setLoading(true);
       const response = await fetch(
-        'https://clubrec-3e4f153fcece.herokuapp.com/recommend',
+        "https://clubrec-3e4f153fcece.herokuapp.com/recommend",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
         }
@@ -113,7 +113,7 @@ function Recommend() {
       if (response.ok) {
         const recommendations = await response.json();
         await updateRecommendations(auth.uid, payload, recommendations);
-        navigate('/home');
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
@@ -123,42 +123,42 @@ function Recommend() {
   };
 
   return (
-    <Container maxWidth='md'>
+    <Container maxWidth="md">
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          height: '100vh',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100vh",
         }}
       >
-        <Box component='form'>
+        <Box component="form">
           <Paper
             elevation={3}
             sx={{
               width: 400,
               padding: 5,
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               gap: 3,
             }}
           >
-            <Typography variant='h5'>Recommendations Survey</Typography>
+            <Typography variant="h5">Recommendations Survey</Typography>
             <FormControl
-              component='fieldset'
-              variant='standard'
+              component="fieldset"
+              variant="standard"
               required
               error={isInvalid.cas}
             >
-              <FormLabel component='legend'>CAS Requirement</FormLabel>
+              <FormLabel component="legend">CAS Requirement</FormLabel>
               <FormGroup>
                 <FormControlLabel
-                  label='Creativity'
+                  label="Creativity"
                   control={
                     <Checkbox
                       checked={input.Creativity}
-                      name='Creativity'
+                      name="Creativity"
                       onChange={(e) => {
                         setInputs({
                           ...input,
@@ -169,10 +169,10 @@ function Recommend() {
                   }
                 />
                 <FormControlLabel
-                  label='Activity'
+                  label="Activity"
                   control={
                     <Checkbox
-                      name='Activity'
+                      name="Activity"
                       checked={input.Activity}
                       onChange={(e) => {
                         setInputs({
@@ -184,10 +184,10 @@ function Recommend() {
                   }
                 />
                 <FormControlLabel
-                  label='Service'
+                  label="Service"
                   control={
                     <Checkbox
-                      name='Service'
+                      name="Service"
                       checked={input.Service}
                       onChange={(e) => {
                         setInputs({
@@ -201,55 +201,55 @@ function Recommend() {
               </FormGroup>
             </FormControl>
             <FormSelectField
-              label='Type of Activity'
+              label="Type of Activity"
               nullable
               options={ACTIVITY_CATEGORIES}
-              value={input['Type of Activity']}
+              value={input["Type of Activity"]}
               onChange={(e) => {
                 setInputs({
                   ...input,
-                  'Type of Activity': e.target.value,
+                  "Type of Activity": e.target.value,
                 });
               }}
             />
             <FormSelectField
-              label='Service Target Group'
+              label="Service Target Group"
               nullable
               options={TARGET_SERVICE_CATEGORIES}
-              value={input['Service Target Group']}
+              value={input["Service Target Group"]}
               onChange={(e) => {
                 setInputs({
                   ...input,
-                  'Service Target Group': e.target.value,
+                  "Service Target Group": e.target.value,
                 });
               }}
             />
             <FormSelectField
-              label='Relevant Subject'
+              label="Relevant Subject"
               nullable
               options={RELEVANT_SUBJECT_CATEGORIES}
-              value={input['Relevant Subject']}
+              value={input["Relevant Subject"]}
               onChange={(e) => {
                 setInputs({
                   ...input,
-                  'Relevant Subject': e.target.value,
+                  "Relevant Subject": e.target.value,
                 });
               }}
             />
             <FormSelectField
-              label='Time Commitment'
+              label="Time Commitment"
               nullable
               options={TIME_COMM_OPTIONS}
-              value={input['Time Commitment']}
+              value={input["Time Commitment"]}
               onChange={(e) => {
                 setInputs({
                   ...input,
-                  'Time Commitment': e.target.value,
+                  "Time Commitment": e.target.value,
                 });
               }}
             />
             <FormSelectField
-              label='Semester(s)'
+              label="Semester(s)"
               required
               error={isInvalid.semesters}
               options={SEMESTER_CATEGORIES}
@@ -262,14 +262,14 @@ function Recommend() {
               }}
             />
             <Button
-              variant='contained'
+              variant="contained"
               onClick={handleSubmit}
               disabled={isLoading}
             >
               {isLoading && (
                 <CircularProgress
                   size={15}
-                  color='inherit'
+                  color="inherit"
                   sx={{ marginRight: 1 }}
                 />
               )}

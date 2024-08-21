@@ -1,12 +1,12 @@
-const nodemailer = require('nodemailer');
-const admin = require('firebase-admin');
-const { onDocumentCreated } = require('firebase-functions/v2/firestore');
+const nodemailer = require("nodemailer");
+const admin = require("firebase-admin");
+const { onDocumentCreated } = require("firebase-functions/v2/firestore");
 
 admin.initializeApp();
 const db = admin.firestore();
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.GMAIL_EMAIL,
     pass: process.env.GMAIL_PASSWORD,
@@ -15,12 +15,12 @@ const transporter = nodemailer.createTransport({
 
 // send email to club leaders when new post created on club forum
 exports.sendPostNotification = onDocumentCreated(
-  'clubs/{clubId}/posts/{postId}',
+  "clubs/{clubId}/posts/{postId}",
   async (event) => {
     const snapshot = event.data;
 
     if (!snapshot) {
-      console.error('No data associated with the event');
+      console.error("No data associated with the event");
       return;
     }
 
@@ -28,7 +28,7 @@ exports.sendPostNotification = onDocumentCreated(
       const postData = snapshot.data();
       const { clubId } = event.params;
 
-      const clubDocRef = db.collection('clubs').doc(clubId);
+      const clubDocRef = db.collection("clubs").doc(clubId);
       const clubDoc = await clubDocRef.get();
       const clubData = clubDoc.data();
 
@@ -72,7 +72,7 @@ exports.sendPostNotification = onDocumentCreated(
         console.log(`Email sent successfully: ${info.response}`);
       });
     } catch (error) {
-      console.error('Error sending email', error);
+      console.error("Error sending email", error);
     }
   }
 );
