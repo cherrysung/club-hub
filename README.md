@@ -1,5 +1,19 @@
 # Club Hub Guide
 
+### How to deploy changes to live site
+
+The live site is hosted using Firebase Hosting. Before we can deploy, we first need to build the application:
+
+```
+npm run build
+```
+
+This will create a `/build` folder with the compiled app. After, you can deploy the new app to Firebase Hosting:
+
+```
+npm run deploy
+```
+
 ### Filtering clubs by semesters
 
 The club list data used throughout the app is fetched, stored, and made available in `clubsProvider.js`. The data is then filtered to only use clubs within the current semester. These are the semester configurations:
