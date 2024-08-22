@@ -81,7 +81,7 @@ function Landing() {
             bottom: 10,
             textAlign: "center",
             width: "100%",
-            color: "grey",
+            color: "light grey",
           }}
         >
           © Jihyeon (Cherry) Sung, Service Council
