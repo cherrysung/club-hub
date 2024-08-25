@@ -6,6 +6,8 @@ import {
   ACTIVITY_CATEGORIES,
   CAS_CATEGORIES,
   NO_IMAGE_SRC,
+  RELEVANT_SUBJECT_CATEGORIES,
+  ROUNDSQUARE_IDEALS,
 } from "../../../lib/constants";
 import EditableSelect from "./EditableSelect";
 
@@ -142,9 +144,26 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
               )}
             </Box>
             <Box position="relative" display="flex" gap={1}>
+              RoundSquare IDEALS:
+              {isLeader ? (
+                <Box flex={1}>
+                  <EditableSelect
+                    options={ROUNDSQUARE_IDEALS}
+                    value={club.roundsquare_ideals}
+                    onSave={(newValue) =>
+                      handleSave("roundsquare_ideals", newValue)
+                    }
+                  />
+                </Box>
+              ) : (
+                <Typography>{club.roundsquare_ideals}</Typography>
+              )}
+            </Box>
+            <Box position="relative" display="flex" gap={1}>
               Relevant Subject:
               {isLeader ? (
                 <EditableSelect
+                  options={RELEVANT_SUBJECT_CATEGORIES}
                   value={club.relevant_subject}
                   onSave={(newValue) =>
                     handleSave("relevant_subject", newValue)

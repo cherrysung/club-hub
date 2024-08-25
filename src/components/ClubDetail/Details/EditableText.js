@@ -1,6 +1,6 @@
-import { Edit } from '@mui/icons-material';
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
-import { useState } from 'react';
+import { Edit } from "@mui/icons-material";
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 function EditableText({ value, onSave, multiline }) {
   const [editing, setEditing] = useState(false);
@@ -18,14 +18,14 @@ function EditableText({ value, onSave, multiline }) {
   return (
     <>
       {editing ? (
-        <Box display='flex' flexDirection='column'>
+        <Box display="flex" flexDirection="column">
           <TextField
             fullWidth
             multiline={multiline}
             value={newValue}
             onChange={(e) => setNewValue(e.target.value)}
           />
-          <Box display='flex' justifyContent='flex-end' paddingTop={1}>
+          <Box display="flex" justifyContent="flex-end" paddingTop={1}>
             <Button onClick={handleSave}>Save</Button>
           </Box>
         </Box>
@@ -34,7 +34,7 @@ function EditableText({ value, onSave, multiline }) {
           <Typography>{value}</Typography>
           <IconButton
             onClick={() => setEditing(true)}
-            sx={{ position: 'absolute', top: 0, right: 0 }}
+            sx={{ position: "absolute", top: 0, right: 0 }}
           >
             <Edit />
           </IconButton>
