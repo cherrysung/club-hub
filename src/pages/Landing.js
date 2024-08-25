@@ -58,9 +58,9 @@ function Landing() {
             variant="body1"
             component="p"
             sx={{
-              maxWidth: "500px", // Controls the width of the paragraph
-              margin: "0 auto", // Centers the paragraph
-              lineHeight: 1.3, // Adjust line height for readability
+              maxWidth: "500px",
+              margin: "0 auto",
+              lineHeight: 1.3,
             }}
           >
             This web app is designed to provide students with a view of all the
@@ -73,6 +73,19 @@ function Landing() {
             organize club selection for students using technology.
           </Typography>
         </Paper>
+
+        <Typography
+          sx={{
+            fontSize: 13,
+            position: "absolute",
+            bottom: 10,
+            textAlign: "center",
+            width: "100%",
+            color: "light grey",
+          }}
+        >
+          © Jihyeon (Cherry) Sung, Service Council
+        </Typography>
       </Box>
     </Container>
   );
