@@ -107,7 +107,7 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
             <Typography>
               Type of Activity:
               {isLeader ? (
-                <EditableText
+                <EditableSelect
                   value={club.type_of_activity}
                   onSave={(newValue) =>
                     handleSave("type of activity", newValue)
@@ -120,7 +120,7 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
             <Typography>
               CAS Requirement:
               {isLeader ? (
-                <EditableText
+                <EditableSelect
                   value={club.cas_requirements}
                   onSave={(newValue) =>
                     handleSave("cas requirements", newValue)
@@ -133,7 +133,7 @@ function Details({ club, setInvokeFetchClubs, isLeader }) {
             <Typography>
               Relevant Subject:
               {isLeader ? (
-                <EditableText
+                <EditableSelect
                   value={club.relevant_subject}
                   onSave={(newValue) =>
                     handleSave("relevant subject", newValue)
