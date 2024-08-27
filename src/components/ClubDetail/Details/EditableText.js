@@ -31,7 +31,11 @@ function EditableText({ value, onSave, multiline }) {
         </Box>
       ) : (
         <>
-          <Typography>{value}</Typography>
+          <Box>
+            {value.split("\n").map((line, index) => (
+              <Typography key={index}>{line}</Typography>
+            ))}
+          </Box>{" "}
           <IconButton
             onClick={() => setEditing(true)}
             sx={{ position: "absolute", top: 0, right: 0 }}
