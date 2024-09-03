@@ -18,7 +18,7 @@ function MyRecommendations({ onNavigate, onTakeSurvey, recommendations }) {
         </Button>
       </Box>
       <List>
-        {recommendations.length > 0 ? (
+        {recommendations?.length > 0 ? (
           recommendations.map((club) => (
             <ListItem disablePadding key={club?.clubId}>
               <ListItemButton dense onClick={() => onNavigate(club?.clubId)}>

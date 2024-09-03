@@ -16,7 +16,7 @@ function MyRecommendations({ onNavigate, favorites, onUnfavorite }) {
         <Typography variant='h5'>Favorites</Typography>
       </Box>
       <List>
-        {favorites.length > 0 ? (
+        {favorites?.length > 0 ? (
           favorites.map((club) => (
             <ListItem
               disablePadding
