@@ -49,7 +49,13 @@ export const AuthProvider = ({ children }) => {
 
       if (user && userAdditionalInfo) {
         if (userAdditionalInfo.isNewUser) {
-          await setUserDoc(user.uid, user.email);
+          await setUserDoc(user.uid, {
+            email: user.email,
+            firstName: userAdditionalInfo.profile.given_name || '',
+            lastName: userAdditionalInfo.profile.family_name || '',
+            favorites: [],
+            recommendations: {},
+          });
           return true;
         }
       }

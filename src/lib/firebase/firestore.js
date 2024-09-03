@@ -36,12 +36,12 @@ export const AddDataButton = () => {
   return <Button onClick={handleClick}>Add Club Data</Button>;
 };
 
-export const setUserDoc = async (uid, email) => {
+export const setUserDoc = async (uid, data) => {
   const userRef = doc(firestore, 'users', uid);
 
   try {
     await setDoc(userRef, {
-      email,
+      ...data,
       createdAt: serverTimestamp(),
     });
   } catch (error) {
