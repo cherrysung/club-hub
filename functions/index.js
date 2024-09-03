@@ -1,12 +1,13 @@
-const nodemailer = require("nodemailer");
-const admin = require("firebase-admin");
-const { onDocumentCreated } = require("firebase-functions/v2/firestore");
+const nodemailer = require('nodemailer');
+const admin = require('firebase-admin');
+const { onDocumentCreated } = require('firebase-functions/v2/firestore');
+const { onRequest } = require('firebase-functions/v2/https');
 
 admin.initializeApp();
 const db = admin.firestore();
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: 'gmail',
   auth: {
     user: process.env.GMAIL_EMAIL,
     pass: process.env.GMAIL_PASSWORD,
@@ -15,12 +16,12 @@ const transporter = nodemailer.createTransport({
 
 // send email to club leaders when new post created on club forum
 exports.sendPostNotification = onDocumentCreated(
-  "clubs/{clubId}/posts/{postId}",
+  'clubs/{clubId}/posts/{postId}',
   async (event) => {
     const snapshot = event.data;
 
     if (!snapshot) {
-      console.error("No data associated with the event");
+      console.error('No data associated with the event');
       return;
     }
 
@@ -28,7 +29,7 @@ exports.sendPostNotification = onDocumentCreated(
       const postData = snapshot.data();
       const { clubId } = event.params;
 
-      const clubDocRef = db.collection("clubs").doc(clubId);
+      const clubDocRef = db.collection('clubs').doc(clubId);
       const clubDoc = await clubDocRef.get();
       const clubData = clubDoc.data();
 
@@ -72,7 +73,46 @@ exports.sendPostNotification = onDocumentCreated(
         console.log(`Email sent successfully: ${info.response}`);
       });
     } catch (error) {
-      console.error("Error sending email", error);
+      console.error('Error sending email', error);
     }
   }
 );
+
+// manually fix user docs with inproper fields
+exports.fixUserDocs = onRequest(async (req, res) => {
+  const batch = db.batch();
+  const usersColRef = db.collection('users');
+
+  try {
+    const snapshot = await usersColRef.get();
+
+    let updatedCount = 0;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+
+      // Check if 'favorites' and 'recommendations' fields are missing
+      if (
+        !data.hasOwnProperty('favorites') ||
+        !data.hasOwnProperty('recommendations')
+      ) {
+        const updatedData = {
+          firstName: data.firstName || '',
+          lastName: data.lastName || '',
+          favorites: data.favorites || [],
+          recommendations: data.recommendations || {},
+          grade: data.grade || '',
+        };
+        batch.set(doc.ref, updatedData, { merge: true });
+        updatedCount++;
+      }
+    });
+
+    await batch.commit();
+
+    res.status(200).send(`Updated ${updatedCount} documents successfully!`);
+  } catch (error) {
+    console.error('Error updating documents: ', error);
+    res.status(500).send('Error updating documents');
+  }
+});
